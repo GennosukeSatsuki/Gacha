@@ -44,8 +44,8 @@ jobs:
           お使いのプラットフォームに応じて、以下のファイルをダウンロードしてください：
           
           - **Windows**: \`plot_mixer-windows-x64.zip\`
-          - **macOS (Apple Silicon)**: \`plot_mixer-macos-arm64.zip\`
-          - **macOS (Intel)**: \`plot_mixer-macos-x64.zip\`
+          - **macOS (Apple Silicon)**: \`plot_mixer-macos-arm64.dmg\`
+          - **macOS (Intel)**: \`plot_mixer-macos-x64.dmg\`
           - **Android**: \`plot_mixer-android.apk\`
           
           ## 🔄 変更内容
@@ -59,9 +59,10 @@ jobs:
           2. 解凍してフォルダ内の実行ファイルを起動
           
           ### macOS
-          1. ZIPファイルをダウンロード
-          2. 解凍してアプリケーションフォルダにドラッグ
-          3. 初回起動時は右クリック→「開く」で実行
+          1. DMGファイルをダウンロード
+          2. DMGファイルをダブルクリックしてマウント
+          3. アプリケーションをApplicationsフォルダにドラッグ
+          4. 初回起動時は右クリック→「開く」で実行
           
           ### Android
           1. APKファイルをダウンロード
@@ -149,10 +150,28 @@ jobs:
         run: |
           flutter build macos --release --target-platform darwin-${{ matrix.flutter_arch }}
 
-      - name: Create macOS archive
+      - name: Create DMG
         run: |
-          cd build/macos/Build/Products/Release
-          zip -r ../../../../../plot_mixer-macos-${{ matrix.arch }}.zip plot_mixer.app
+          # Install create-dmg if not available
+          brew install create-dmg || true
+          
+          # Create a temporary directory for DMG contents
+          mkdir -p dmg_temp
+          cp -R build/macos/Build/Products/Release/plot_mixer.app dmg_temp/
+          
+          # Create DMG
+          create-dmg \
+            --volname "Plot Mixer" \
+            --volicon "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" \
+            --window-pos 200 120 \
+            --window-size 600 400 \
+            --icon-size 100 \
+            --icon "plot_mixer.app" 175 190 \
+            --hide-extension "plot_mixer.app" \
+            --app-drop-link 425 190 \
+            "plot_mixer-macos-${{ matrix.arch }}.dmg" \
+            "dmg_temp/" || \
+          hdiutil create -volname "Plot Mixer" -srcfolder dmg_temp -ov -format UDZO "plot_mixer-macos-${{ matrix.arch }}.dmg"
 
       - name: Upload macOS Release Asset
         uses: actions/upload-release-asset@v1
@@ -160,9 +179,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create-release.outputs.upload_url }}
-          asset_path: ./plot_mixer-macos-${{ matrix.arch }}.zip
-          asset_name: plot_mixer-macos-${{ matrix.arch }}.zip
-          asset_content_type: application/zip
+          asset_path: ./plot_mixer-macos-${{ matrix.arch }}.dmg
+          asset_name: plot_mixer-macos-${{ matrix.arch }}.dmg
+          asset_content_type: application/x-apple-diskimage
 
   build-android:
     name: Build Android

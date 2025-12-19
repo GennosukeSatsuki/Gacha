@@ -164,8 +164,8 @@ GitHub Actionsが自動的に以下を実行します：
 
 各リリースには以下のファイルが含まれます：
 - `plot_mixer-windows-x64.zip` - Windows版
-- `plot_mixer-macos-arm64.zip` - macOS Apple Silicon版
-- `plot_mixer-macos-x64.zip` - macOS Intel版
+- `plot_mixer-macos-arm64.dmg` - macOS Apple Silicon版
+- `plot_mixer-macos-x64.dmg` - macOS Intel版
 - `plot_mixer-android.apk` - Android版
 
 ## 🤝 コントリビューション
