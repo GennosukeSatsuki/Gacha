@@ -283,6 +283,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Beginning of an adventure for hidden treasure.'**
   String get storyTreasureMapDesc;
+
+  /// No description provided for @typeCreature.
+  ///
+  /// In en, this message translates to:
+  /// **'Creature'**
+  String get typeCreature;
+
+  /// No description provided for @typeSorcery.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorcery'**
+  String get typeSorcery;
 }
 
 class _AppLocalizationsDelegate

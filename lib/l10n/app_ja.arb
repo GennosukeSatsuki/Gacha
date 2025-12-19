@@ -31,5 +31,7 @@
   "storyBetrayal": "裏切り",
   "storyBetrayalDesc": "信頼していた仲間の予想外の行動。",
   "storyTreasureMap": "宝の地図",
-  "storyTreasureMapDesc": "隠された財宝を巡る冒険の幕開け。"
+  "storyTreasureMapDesc": "隠された財宝を巡る冒険の幕開け。",
+  "typeCreature": "クリーチャー",
+  "typeSorcery": "ソーサリー"
 }

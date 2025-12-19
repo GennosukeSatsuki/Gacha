@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        options:
+          # Disable formatting for generated files
+          format: false

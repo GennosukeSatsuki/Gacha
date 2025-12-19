@@ -100,4 +100,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get storyTreasureMapDesc => '隠された財宝を巡る冒険の幕開け。';
+
+  @override
+  String get typeCreature => 'クリーチャー';
+
+  @override
+  String get typeSorcery => 'ソーサリー';
 }

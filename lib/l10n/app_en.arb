@@ -30,5 +30,7 @@
   "storyBetrayal": "Betrayal",
   "storyBetrayalDesc": "Unexpected action from a trusted ally.",
   "storyTreasureMap": "Treasure Map",
-  "storyTreasureMapDesc": "Beginning of an adventure for hidden treasure."
+  "storyTreasureMapDesc": "Beginning of an adventure for hidden treasure.",
+  "typeCreature": "Creature",
+  "typeSorcery": "Sorcery"
 }

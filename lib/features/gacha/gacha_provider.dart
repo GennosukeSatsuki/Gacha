@@ -3,14 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:plot_mixer/l10n/app_localizations.dart';
 import '../../data/repositories/gacha_repository.dart';
 import '../../domain/models/card_model.dart';
+import 'gacha_card_state.dart';
 
-final gachaControllerProvider = NotifierProvider<GachaController, List<CardModel>>(GachaController.new);
+final gachaControllerProvider = NotifierProvider<GachaController, List<GachaCardState>>(GachaController.new);
 
-class GachaController extends Notifier<List<CardModel>> {
+class GachaController extends Notifier<List<GachaCardState>> {
   final Random _random = Random();
 
   @override
-  List<CardModel> build() {
+  List<GachaCardState> build() {
     return [];
   }
 
@@ -23,7 +24,16 @@ class GachaController extends Notifier<List<CardModel>> {
     final selectedChars = _pickRandom(allChars, charCount);
     final selectedStories = _pickRandom(allStories, storyCount);
 
-    state = [...selectedChars, ...selectedStories];
+    final allCards = [...selectedChars, ...selectedStories];
+    
+    // Initialize all cards as face down
+    state = allCards.asMap().entries.map((entry) {
+      return GachaCardState(
+        card: entry.value,
+        revealState: CardRevealState.faceDown,
+        index: entry.key,
+      );
+    }).toList();
   }
 
   List<CardModel> _pickRandom(List<CardModel> source, int count) {
@@ -32,6 +42,19 @@ class GachaController extends Notifier<List<CardModel>> {
     // Shuffle copy to avoid mutating original list
     final shuffled = List<CardModel>.from(source)..shuffle(_random);
     return shuffled.take(count).toList();
+  }
+  
+  void revealCard(int index) {
+    if (index < 0 || index >= state.length) return;
+    
+    final updatedState = [...state];
+    final currentCard = updatedState[index];
+    
+    // Only reveal if face down
+    if (currentCard.revealState == CardRevealState.faceDown) {
+      updatedState[index] = currentCard.copyWith(revealState: CardRevealState.revealed);
+      state = updatedState;
+    }
   }
   
   void clear() {

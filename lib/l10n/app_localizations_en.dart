@@ -109,4 +109,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get storyTreasureMapDesc =>
       'Beginning of an adventure for hidden treasure.';
+
+  @override
+  String get typeCreature => 'Creature';
+
+  @override
+  String get typeSorcery => 'Sorcery';
 }
