@@ -1,0 +1,205 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      version: ${{ steps.get_version.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Generate release notes
+        id: generate_notes
+        run: |
+          # Get the previous tag
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          
+          # Generate changelog
+          if [ -z "$PREVIOUS_TAG" ]; then
+            CHANGELOG=$(git log --pretty=format:"- %s" --no-merges)
+          else
+            CHANGELOG=$(git log ${PREVIOUS_TAG}..HEAD --pretty=format:"- %s" --no-merges)
+          fi
+          
+          # Create release notes
+          cat > release_notes.md << EOF
+          # アイデアミキサー v${{ steps.get_version.outputs.version }}
+          
+          ## 📦 ダウンロード
+          
+          お使いのプラットフォームに応じて、以下のファイルをダウンロードしてください：
+          
+          - **Windows**: \`plot_mixer-windows-x64.zip\`
+          - **macOS (Apple Silicon)**: \`plot_mixer-macos-arm64.zip\`
+          - **macOS (Intel)**: \`plot_mixer-macos-x64.zip\`
+          - **Android**: \`plot_mixer-android.apk\`
+          
+          ## 🔄 変更内容
+          
+          ${CHANGELOG}
+          
+          ## 📝 インストール方法
+          
+          ### Windows
+          1. ZIPファイルをダウンロード
+          2. 解凍してフォルダ内の実行ファイルを起動
+          
+          ### macOS
+          1. ZIPファイルをダウンロード
+          2. 解凍してアプリケーションフォルダにドラッグ
+          3. 初回起動時は右クリック→「開く」で実行
+          
+          ### Android
+          1. APKファイルをダウンロード
+          2. 提供元不明のアプリのインストールを許可
+          3. APKファイルをタップしてインストール
+          
+          ---
+          
+          **Full Changelog**: https://github.com/${{ github.repository }}/compare/${PREVIOUS_TAG}...v${{ steps.get_version.outputs.version }}
+          EOF
+          
+          cat release_notes.md
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: v${{ steps.get_version.outputs.version }}
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
+
+  build-windows:
+    name: Build Windows
+    needs: create-release
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Windows
+        run: flutter build windows --release
+
+      - name: Create Windows archive
+        run: |
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath plot_mixer-windows-x64.zip
+
+      - name: Upload Windows Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: ./plot_mixer-windows-x64.zip
+          asset_name: plot_mixer-windows-x64.zip
+          asset_content_type: application/zip
+
+  build-macos:
+    name: Build macOS
+    needs: create-release
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        include:
+          - arch: arm64
+            flutter_arch: arm64
+          - arch: x64
+            flutter_arch: x86_64
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build macOS (${{ matrix.arch }})
+        run: |
+          flutter build macos --release --target-platform darwin-${{ matrix.flutter_arch }}
+
+      - name: Create macOS archive
+        run: |
+          cd build/macos/Build/Products/Release
+          zip -r ../../../../../plot_mixer-macos-${{ matrix.arch }}.zip plot_mixer.app
+
+      - name: Upload macOS Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: ./plot_mixer-macos-${{ matrix.arch }}.zip
+          asset_name: plot_mixer-macos-${{ matrix.arch }}.zip
+          asset_content_type: application/zip
+
+  build-android:
+    name: Build Android
+    needs: create-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Android APK
+        run: flutter build apk --release
+
+      - name: Rename APK
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk plot_mixer-android.apk
+
+      - name: Upload Android Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: ./plot_mixer-android.apk
+          asset_name: plot_mixer-android.apk
+          asset_content_type: application/vnd.android.package-archive

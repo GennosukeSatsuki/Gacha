@@ -137,6 +137,37 @@ lib/
 2. 翻訳を追加
 3. `flutter pub get` を実行
 
+## 🚀 リリースプロセス
+
+このプロジェクトは、GitHub Actionsを使用して自動的にマルチプラットフォームビルドを生成します。
+
+### 自動リリース
+
+新しいバージョンをリリースするには：
+
+1. バージョン番号を更新（`pubspec.yaml`）
+2. 変更をコミット
+3. タグを作成してプッシュ:
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+GitHub Actionsが自動的に以下を実行します：
+- ✅ Windows版ビルド（x64）
+- ✅ macOS版ビルド（Apple Silicon & Intel）
+- ✅ Android版ビルド（APK）
+- ✅ リリースノート自動生成
+- ✅ GitHubリリースページへの自動アップロード
+
+### ビルド成果物
+
+各リリースには以下のファイルが含まれます：
+- `plot_mixer-windows-x64.zip` - Windows版
+- `plot_mixer-macos-arm64.zip` - macOS Apple Silicon版
+- `plot_mixer-macos-x64.zip` - macOS Intel版
+- `plot_mixer-android.apk` - Android版
+
 ## 🤝 コントリビューション
 
 プルリクエストを歓迎します！大きな変更の場合は、まずissueを開いて変更内容を議論してください。
