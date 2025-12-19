@@ -4,25 +4,28 @@ import 'package:plot_mixer/l10n/app_localizations.dart';
 import '../../data/repositories/gacha_repository.dart';
 import '../../domain/models/card_model.dart';
 import 'gacha_card_state.dart';
+import 'gacha_settings_provider.dart';
 
 final gachaControllerProvider = NotifierProvider<GachaController, List<GachaCardState>>(GachaController.new);
 
 class GachaController extends Notifier<List<GachaCardState>> {
-  final Random _random = Random();
+  // Use cryptographically secure random for unbiased card selection
+  final Random _random = Random.secure();
 
   @override
   List<GachaCardState> build() {
     return [];
   }
 
-  // Default configuration: 2 Characters, 1 Story
-  void spin(AppLocalizations l10n, {int charCount = 2, int storyCount = 1}) {
+  // Use settings from gachaSettingsProvider
+  void spin(AppLocalizations l10n) {
+    final settings = ref.read(gachaSettingsProvider);
     final repository = ref.read(gachaRepositoryProvider);
     final allChars = repository.getPresetCharacters(l10n);
     final allStories = repository.getPresetStories(l10n);
 
-    final selectedChars = _pickRandom(allChars, charCount);
-    final selectedStories = _pickRandom(allStories, storyCount);
+    final selectedChars = _pickRandom(allChars, settings.characterCount);
+    final selectedStories = _pickRandom(allStories, settings.storyCount);
 
     final allCards = [...selectedChars, ...selectedStories];
     

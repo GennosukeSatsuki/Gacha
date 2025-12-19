@@ -115,4 +115,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get typeSorcery => 'Sorcery';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get gachaSettings => 'Gacha Settings';
+
+  @override
+  String get characterCount => 'Character Count';
+
+  @override
+  String get characterCountDesc => 'Number of characters per gacha pull';
+
+  @override
+  String get storyCount => 'Story Count';
+
+  @override
+  String get storyCountDesc => 'Number of stories per gacha pull';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get version => 'Version';
+
+  @override
+  String get license => 'License';
+
+  @override
+  String get github => 'GitHub';
 }

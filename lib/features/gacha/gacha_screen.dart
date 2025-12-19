@@ -6,6 +6,7 @@ import 'gacha_provider.dart';
 import 'gacha_card_state.dart';
 import 'animated_gacha_card.dart';
 import 'card_detail_modal.dart';
+import 'settings_modal.dart';
 
 class GachaScreen extends ConsumerWidget {
   const GachaScreen({super.key});
@@ -26,6 +27,13 @@ class GachaScreen extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              SettingsModal.show(context);
+            },
+            tooltip: l10n.settings,
+          ),
           if (cardStates.isNotEmpty)
             IconButton(
               icon: const Icon(Icons.refresh),

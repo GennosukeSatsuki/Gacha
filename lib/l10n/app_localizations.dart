@@ -295,6 +295,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sorcery'**
   String get typeSorcery;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @gachaSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Gacha Settings'**
+  String get gachaSettings;
+
+  /// No description provided for @characterCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Character Count'**
+  String get characterCount;
+
+  /// No description provided for @characterCountDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of characters per gacha pull'**
+  String get characterCountDesc;
+
+  /// No description provided for @storyCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Story Count'**
+  String get storyCount;
+
+  /// No description provided for @storyCountDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of stories per gacha pull'**
+  String get storyCountDesc;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get version;
+
+  /// No description provided for @license.
+  ///
+  /// In en, this message translates to:
+  /// **'License'**
+  String get license;
+
+  /// No description provided for @github.
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub'**
+  String get github;
 }
 
 class _AppLocalizationsDelegate

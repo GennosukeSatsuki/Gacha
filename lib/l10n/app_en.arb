@@ -32,5 +32,16 @@
   "storyTreasureMap": "Treasure Map",
   "storyTreasureMapDesc": "Beginning of an adventure for hidden treasure.",
   "typeCreature": "Creature",
-  "typeSorcery": "Sorcery"
+  "typeSorcery": "Sorcery",
+  
+  "settings": "Settings",
+  "gachaSettings": "Gacha Settings",
+  "characterCount": "Character Count",
+  "characterCountDesc": "Number of characters per gacha pull",
+  "storyCount": "Story Count",
+  "storyCountDesc": "Number of stories per gacha pull",
+  "about": "About",
+  "version": "Version",
+  "license": "License",
+  "github": "GitHub"
 }

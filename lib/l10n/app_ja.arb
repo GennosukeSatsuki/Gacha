@@ -33,5 +33,16 @@
   "storyTreasureMap": "宝の地図",
   "storyTreasureMapDesc": "隠された財宝を巡る冒険の幕開け。",
   "typeCreature": "クリーチャー",
-  "typeSorcery": "ソーサリー"
+  "typeSorcery": "ソーサリー",
+  
+  "settings": "設定",
+  "gachaSettings": "ガチャ設定",
+  "characterCount": "キャラクター枚数",
+  "characterCountDesc": "1回のガチャで引くキャラクター数",
+  "storyCount": "ストーリー枚数",
+  "storyCountDesc": "1回のガチャで引くストーリー数",
+  "about": "アプリについて",
+  "version": "バージョン",
+  "license": "ライセンス",
+  "github": "GitHub"
 }
