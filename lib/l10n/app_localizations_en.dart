@@ -135,6 +135,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storyCountDesc => 'Number of stories per gacha pull';
 
   @override
+  String get revealAll => 'REVEAL ALL';
+
+  @override
+  String get clear => 'Clear';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get japanese => 'Japanese';
+
+  @override
+  String get english => 'English';
+
+  @override
   String get about => 'About';
 
   @override

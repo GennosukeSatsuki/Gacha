@@ -332,6 +332,36 @@ abstract class AppLocalizations {
   /// **'Number of stories per gacha pull'**
   String get storyCountDesc;
 
+  /// No description provided for @revealAll.
+  ///
+  /// In en, this message translates to:
+  /// **'REVEAL ALL'**
+  String get revealAll;
+
+  /// No description provided for @clear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clear;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @japanese.
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese'**
+  String get japanese;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
   /// No description provided for @about.
   ///
   /// In en, this message translates to:

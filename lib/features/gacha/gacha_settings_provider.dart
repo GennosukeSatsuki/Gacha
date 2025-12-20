@@ -4,19 +4,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 class GachaSettings {
   final int characterCount;
   final int storyCount;
+  final String locale; // 'en' or 'ja'
 
   const GachaSettings({
     required this.characterCount,
     required this.storyCount,
+    required this.locale,
   });
 
   GachaSettings copyWith({
     int? characterCount,
     int? storyCount,
+    String? locale,
   }) {
     return GachaSettings(
       characterCount: characterCount ?? this.characterCount,
       storyCount: storyCount ?? this.storyCount,
+      locale: locale ?? this.locale,
     );
   }
 
@@ -30,6 +34,7 @@ final gachaSettingsProvider = NotifierProvider<GachaSettingsNotifier, GachaSetti
 class GachaSettingsNotifier extends Notifier<GachaSettings> {
   static const String _keyCharacterCount = 'gacha_character_count';
   static const String _keyStoryCount = 'gacha_story_count';
+  static const String _keyLocale = 'gacha_locale';
 
   @override
   GachaSettings build() {
@@ -37,6 +42,7 @@ class GachaSettingsNotifier extends Notifier<GachaSettings> {
     return const GachaSettings(
       characterCount: 2,
       storyCount: 1,
+      locale: 'ja', // デフォルトは日本語
     );
   }
 
@@ -44,10 +50,12 @@ class GachaSettingsNotifier extends Notifier<GachaSettings> {
     final prefs = await SharedPreferences.getInstance();
     final characterCount = prefs.getInt(_keyCharacterCount) ?? 2;
     final storyCount = prefs.getInt(_keyStoryCount) ?? 1;
+    final locale = prefs.getString(_keyLocale) ?? 'ja';
     
     state = GachaSettings(
       characterCount: characterCount,
       storyCount: storyCount,
+      locale: locale,
     );
   }
 
@@ -71,5 +79,12 @@ class GachaSettingsNotifier extends Notifier<GachaSettings> {
     
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(_keyStoryCount, newCount);
+  }
+
+  Future<void> setLocale(String locale) async {
+    state = state.copyWith(locale: locale);
+    
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyLocale, locale);
   }
 }

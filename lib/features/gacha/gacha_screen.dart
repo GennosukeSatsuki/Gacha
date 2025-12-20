@@ -40,7 +40,7 @@ class GachaScreen extends ConsumerWidget {
               onPressed: () {
                 ref.read(gachaControllerProvider.notifier).clear();
               },
-              tooltip: 'Clear',
+              tooltip: l10n.clear,
             ),
         ],
       ),
@@ -146,7 +146,7 @@ class GachaScreen extends ConsumerWidget {
                                   ),
                                 ),
                                 icon: const Icon(Icons.visibility, size: 20),
-                                label: const Text('REVEAL ALL'),
+                                label: Text(l10n.revealAll),
                               ),
                             ),
                           ),

@@ -77,6 +77,17 @@ class SettingsModal extends ConsumerWidget {
                       title: l10n.gachaSettings,
                       children: [
                         _SettingsTile(
+                          icon: Icons.language,
+                          title: l10n.language,
+                          subtitle: settings.locale == 'ja' ? l10n.japanese : l10n.english,
+                          trailing: _LanguageSwitcher(
+                            currentLocale: settings.locale,
+                            onChanged: (locale) {
+                              ref.read(gachaSettingsProvider.notifier).setLocale(locale);
+                            },
+                          ),
+                        ),
+                        _SettingsTile(
                           icon: Icons.person,
                           title: l10n.characterCount,
                           subtitle: l10n.characterCountDesc,
@@ -289,6 +300,66 @@ class _CounterWidget extends StatelessWidget {
             constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _LanguageSwitcher extends StatelessWidget {
+  final String currentLocale;
+  final ValueChanged<String> onChanged;
+
+  const _LanguageSwitcher({
+    required this.currentLocale,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 36,
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.05),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.1),
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildOption('JA', 'ja'),
+          Container(
+            width: 1,
+            height: 20,
+            color: Colors.white.withValues(alpha: 0.1),
+          ),
+          _buildOption('EN', 'en'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildOption(String label, String value) {
+    final isSelected = currentLocale == value;
+    return GestureDetector(
+      onTap: () => onChanged(value),
+      child: Container(
+        width: 44,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFFD4AF37).withValues(alpha: 0.2) : Colors.transparent,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        margin: const EdgeInsets.all(2),
+        child: Text(
+          label,
+          style: GoogleFonts.philosopher(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: isSelected ? const Color(0xFFD4AF37) : Colors.white60,
+          ),
+        ),
       ),
     );
   }

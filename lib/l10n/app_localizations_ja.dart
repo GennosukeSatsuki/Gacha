@@ -126,6 +126,21 @@ class AppLocalizationsJa extends AppLocalizations {
   String get storyCountDesc => '1回のガチャで引くストーリー数';
 
   @override
+  String get revealAll => 'すべて開く';
+
+  @override
+  String get clear => 'リセット';
+
+  @override
+  String get language => '言語';
+
+  @override
+  String get japanese => '日本語';
+
+  @override
+  String get english => '英語';
+
+  @override
   String get about => 'アプリについて';
 
   @override
