@@ -5,6 +5,7 @@ import '../../data/repositories/gacha_repository.dart';
 import '../../domain/models/card_model.dart';
 import 'gacha_card_state.dart';
 import 'gacha_settings_provider.dart';
+import 'custom_card_provider.dart';
 
 final gachaControllerProvider = NotifierProvider<GachaController, List<GachaCardState>>(GachaController.new);
 
@@ -21,11 +22,29 @@ class GachaController extends Notifier<List<GachaCardState>> {
   void spin(AppLocalizations l10n) {
     final settings = ref.read(gachaSettingsProvider);
     final repository = ref.read(gachaRepositoryProvider);
-    final allChars = repository.getPresetCharacters(l10n);
-    final allStories = repository.getPresetStories(l10n);
+    
+    // Get all available cards
+    List<CardModel> characters = [];
+    List<CardModel> stories = [];
+    
+    // Default set
+    if (settings.includeDefaultSet) {
+      characters.addAll(repository.getPresetCharacters(l10n));
+      stories.addAll(repository.getPresetStories(l10n));
+    }
+    
+    // Always include custom cards from imported sets
+    final customCards = ref.read(customCardProvider.notifier).getAllCustomCards();
+    characters.addAll(customCards.where((c) => c.type == CardType.character));
+    stories.addAll(customCards.where((c) => c.type == CardType.story));
+    
+    // Also include a sample bundled card if we still want that for now
+    // (Optional: remove this if we only want truly imported cards)
+    final sampleCards = repository.getCustomCards();
+    characters.addAll(sampleCards.where((c) => c.type == CardType.character));
 
-    final selectedChars = _pickRandom(allChars, settings.characterCount);
-    final selectedStories = _pickRandom(allStories, settings.storyCount);
+    final selectedChars = _pickRandom(characters, settings.characterCount);
+    final selectedStories = _pickRandom(stories, settings.storyCount);
 
     final allCards = [...selectedChars, ...selectedStories];
     

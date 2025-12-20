@@ -46,13 +46,14 @@ class GachaScreen extends ConsumerWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: RadialGradient(
-            colors: [
-              Colors.blueGrey.withValues(alpha: 0.2),
-              Colors.black,
-            ],
-            center: Alignment.center,
-            radius: 1.5,
+          image: DecorationImage(
+            image: const AssetImage('assets/images/cards/buckground.png'),
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withValues(alpha: 0.3),
+              BlendMode.darken,
+            ),
           ),
         ),
         child: Column(

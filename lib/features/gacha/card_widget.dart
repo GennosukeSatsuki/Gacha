@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plot_mixer/l10n/app_localizations.dart';
@@ -151,6 +152,24 @@ class _ArtFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget? artContent;
+
+    if (card.imagePath != null) {
+      if (card.isAsset) {
+        artContent = Image.asset(
+          card.imagePath!,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) => _buildPlaceholder(),
+        );
+      } else {
+        artContent = Image.file(
+          File(card.imagePath!),
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) => _buildPlaceholder(),
+        );
+      }
+    }
+
     return Container(
       margin: EdgeInsets.all(6 * scaleFactor),
       height: 160 * scaleFactor,
@@ -160,12 +179,18 @@ class _ArtFrame extends StatelessWidget {
         borderRadius: BorderRadius.circular(0),
         border: Border.all(color: Colors.black87, width: 2 * scaleFactor),
       ),
-      child: Center(
-        child: Icon(
-          card.type == CardType.character ? Icons.person : Icons.auto_stories,
-          size: 60 * scaleFactor,
-          color: Colors.black26,
-        ),
+      child: ClipRect(
+        child: artContent ?? _buildPlaceholder(),
+      ),
+    );
+  }
+
+  Widget _buildPlaceholder() {
+    return Center(
+      child: Icon(
+        card.type == CardType.character ? Icons.person : Icons.auto_stories,
+        size: 60 * scaleFactor,
+        color: Colors.black26,
       ),
     );
   }

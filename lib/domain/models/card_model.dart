@@ -32,6 +32,9 @@ class CardModel {
   final int? power;
   final int? toughness;
   final String? manaCost;
+  final String? imagePath;      // Path to front image
+  final String? backImagePath;  // Special back image for this card/set
+  final bool isAsset;           // true if from assets, false if from local file
 
   const CardModel({
     required this.id,
@@ -45,6 +48,9 @@ class CardModel {
     this.power,
     this.toughness,
     this.manaCost,
+    this.imagePath,
+    this.backImagePath,
+    this.isAsset = true,
   });
 
   CardModel copyWith({
@@ -59,6 +65,9 @@ class CardModel {
     int? power,
     int? toughness,
     String? manaCost,
+    String? imagePath,
+    String? backImagePath,
+    bool? isAsset,
   }) {
     return CardModel(
       id: id ?? this.id,
@@ -72,6 +81,9 @@ class CardModel {
       power: power ?? this.power,
       toughness: toughness ?? this.toughness,
       manaCost: manaCost ?? this.manaCost,
+      imagePath: imagePath ?? this.imagePath,
+      backImagePath: backImagePath ?? this.backImagePath,
+      isAsset: isAsset ?? this.isAsset,
     );
   }
 
@@ -92,6 +104,9 @@ class CardModel {
       power: json['power'] as int?,
       toughness: json['toughness'] as int?,
       manaCost: json['manaCost'] as String?,
+      imagePath: json['imagePath'] as String?,
+      backImagePath: json['backImagePath'] as String?,
+      isAsset: json['isAsset'] as bool? ?? true,
     );
   }
 
@@ -108,6 +123,9 @@ class CardModel {
       'power': power,
       'toughness': toughness,
       'manaCost': manaCost,
+      'imagePath': imagePath,
+      'backImagePath': backImagePath,
+      'isAsset': isAsset,
     };
   }
 
@@ -125,7 +143,10 @@ class CardModel {
         other.element == element &&
         other.power == power &&
         other.toughness == toughness &&
-        other.manaCost == manaCost;
+        other.manaCost == manaCost &&
+        other.imagePath == imagePath &&
+        other.backImagePath == backImagePath &&
+        other.isAsset == isAsset;
   }
 
   @override
@@ -142,8 +163,12 @@ class CardModel {
       power,
       toughness,
       manaCost,
+      imagePath,
+      backImagePath,
+      isAsset,
     );
   }
+// ... rest of the file
 
   bool _listEquals<T>(List<T>? a, List<T>? b) {
     if (a == null) return b == null;

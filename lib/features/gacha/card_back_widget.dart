@@ -18,114 +18,43 @@ class CardBackWidget extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            const Color(0xFF1A1A2E),
-            const Color(0xFF0F0F1E),
-            const Color(0xFF16213E),
-          ],
-          stops: const [0.0, 0.5, 1.0],
-        ),
-        border: Border.all(
-          color: const Color(0xFFD4AF37).withOpacity(0.5),
-          width: 2,
-        ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFD4AF37).withOpacity(0.3),
-            blurRadius: 20,
-            spreadRadius: 2,
-          ),
-          BoxShadow(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
         ],
       ),
-      child: Stack(
-        children: [
-          // Decorative pattern
-          Positioned.fill(
-            child: CustomPaint(
-              painter: _CardBackPatternPainter(),
-            ),
-          ),
-          
-          // Center emblem
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: RadialGradient(
-                      colors: [
-                        const Color(0xFFD4AF37).withOpacity(0.3),
-                        Colors.transparent,
-                      ],
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.auto_awesome,
-                    size: 60,
-                    color: Color(0xFFD4AF37),
-                  ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Image.asset(
+          'assets/images/cards/back/Card_back.png',
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            // エラー時のフォールバック（以前のデザインに近いスタイル）
+            return Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    const Color(0xFF1A1A2E),
+                    const Color(0xFF0F0F1E),
+                    const Color(0xFF16213E),
+                  ],
                 ),
-                const SizedBox(height: 16),
-                Text(
-                  '?',
-                  style: GoogleFonts.philosopher(
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFFD4AF37),
-                    shadows: [
-                      Shadow(
-                        color: Colors.black.withOpacity(0.5),
-                        blurRadius: 10,
-                      ),
-                    ],
-                  ),
+              ),
+              child: const Center(
+                child: Icon(
+                  Icons.auto_awesome,
+                  size: 60,
+                  color: Color(0xFFD4AF37),
                 ),
-              ],
-            ),
-          ),
-          
-          // Corner decorations
-          Positioned(
-            top: 12,
-            left: 12,
-            child: _CornerDecoration(),
-          ),
-          Positioned(
-            top: 12,
-            right: 12,
-            child: Transform.rotate(
-              angle: 1.5708, // 90 degrees
-              child: _CornerDecoration(),
-            ),
-          ),
-          Positioned(
-            bottom: 12,
-            left: 12,
-            child: Transform.rotate(
-              angle: -1.5708, // -90 degrees
-              child: _CornerDecoration(),
-            ),
-          ),
-          Positioned(
-            bottom: 12,
-            right: 12,
-            child: Transform.rotate(
-              angle: 3.14159, // 180 degrees
-              child: _CornerDecoration(),
-            ),
-          ),
-        ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

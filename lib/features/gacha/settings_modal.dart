@@ -1,8 +1,11 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:plot_mixer/l10n/app_localizations.dart';
 import 'gacha_settings_provider.dart';
+import 'custom_card_provider.dart';
 
 class SettingsModal extends ConsumerWidget {
   const SettingsModal({super.key});
@@ -21,132 +24,225 @@ class SettingsModal extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final settings = ref.watch(gachaSettingsProvider);
     
-    return Dialog(
-      backgroundColor: const Color(0xFF1A1A1A),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: BorderSide(
-          color: const Color(0xFFD4AF37).withValues(alpha: 0.3),
-          width: 2,
+    return DefaultTabController(
+      length: 2,
+      child: Dialog(
+        backgroundColor: const Color(0xFF1A1A1A),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            color: const Color(0xFFD4AF37).withValues(alpha: 0.3),
+            width: 2,
+          ),
         ),
-      ),
-      child: Container(
-        width: 500,
-        constraints: const BoxConstraints(maxHeight: 600),
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header
-            Row(
-              children: [
-                Icon(
-                  Icons.settings,
-                  color: const Color(0xFFD4AF37),
-                  size: 28,
-                ),
-                const SizedBox(width: 12),
-                Text(
-                  l10n.settings,
-                  style: GoogleFonts.philosopher(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                  icon: const Icon(Icons.close, color: Colors.white70),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            
-            Divider(color: Colors.white.withValues(alpha: 0.1)),
-            const SizedBox(height: 24),
-            
-            // Settings Content
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: Container(
+          width: 500,
+          constraints: const BoxConstraints(maxHeight: 600),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+                child: Row(
                   children: [
-                    _SettingsSection(
-                      title: l10n.gachaSettings,
-                      children: [
-                        _SettingsTile(
-                          icon: Icons.language,
-                          title: l10n.language,
-                          subtitle: settings.locale == 'ja' ? l10n.japanese : l10n.english,
-                          trailing: _LanguageSwitcher(
-                            currentLocale: settings.locale,
-                            onChanged: (locale) {
-                              ref.read(gachaSettingsProvider.notifier).setLocale(locale);
-                            },
-                          ),
-                        ),
-                        _SettingsTile(
-                          icon: Icons.person,
-                          title: l10n.characterCount,
-                          subtitle: l10n.characterCountDesc,
-                          trailing: _CounterWidget(
-                            value: settings.characterCount,
-                            maxValue: 10 - settings.storyCount,
-                            onChanged: (value) {
-                              ref.read(gachaSettingsProvider.notifier).setCharacterCount(value);
-                            },
-                          ),
-                        ),
-                        _SettingsTile(
-                          icon: Icons.auto_stories,
-                          title: l10n.storyCount,
-                          subtitle: l10n.storyCountDesc,
-                          trailing: _CounterWidget(
-                            value: settings.storyCount,
-                            maxValue: 10 - settings.characterCount,
-                            onChanged: (value) {
-                              ref.read(gachaSettingsProvider.notifier).setStoryCount(value);
-                            },
-                          ),
-                        ),
-                      ],
+                    Icon(
+                      Icons.settings,
+                      color: const Color(0xFFD4AF37),
+                      size: 28,
                     ),
-                    
-                    const SizedBox(height: 24),
-                    
-                    _SettingsSection(
-                      title: l10n.about,
-                      children: [
-                        _SettingsTile(
-                          icon: Icons.info_outline,
-                          title: l10n.version,
-                          subtitle: '1.0.0',
-                        ),
-                        _SettingsTile(
-                          icon: Icons.code,
-                          title: l10n.license,
-                          subtitle: 'MIT License',
-                          onTap: () {
-                            // TODO: Show license dialog
-                          },
-                        ),
-                        _SettingsTile(
-                          icon: Icons.language,
-                          title: l10n.github,
-                          subtitle: 'github.com/GennosukeSatsuki/Gacha',
-                          onTap: () {
-                            // TODO: Open GitHub link
-                          },
-                        ),
-                      ],
+                    const SizedBox(width: 12),
+                    Text(
+                      l10n.settings,
+                      style: GoogleFonts.philosopher(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(Icons.close, color: Colors.white70),
+                      onPressed: () => Navigator.of(context).pop(),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              
+              // Tab Bar
+              TabBar(
+                indicatorColor: const Color(0xFFD4AF37),
+                labelColor: const Color(0xFFD4AF37),
+                unselectedLabelColor: Colors.white60,
+                labelStyle: GoogleFonts.philosopher(fontWeight: FontWeight.bold),
+                tabs: const [
+                  Tab(text: '基本設定'),
+                  Tab(text: 'カード設定'),
+                ],
+              ),
+              
+              const SizedBox(height: 8),
+              
+              // Settings Content
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    // Tab 1: Basic Settings
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _SettingsSection(
+                            title: '一般',
+                            children: [
+                              _SettingsTile(
+                                icon: Icons.language,
+                                title: l10n.language,
+                                subtitle: settings.locale == 'ja' ? l10n.japanese : l10n.english,
+                                trailing: _LanguageSwitcher(
+                                  currentLocale: settings.locale,
+                                  onChanged: (locale) {
+                                    ref.read(gachaSettingsProvider.notifier).setLocale(locale);
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 24),
+                          _SettingsSection(
+                            title: l10n.about,
+                            children: [
+                              _SettingsTile(
+                                icon: Icons.info_outline,
+                                title: l10n.version,
+                                subtitle: '1.0.0',
+                              ),
+                              _SettingsTile(
+                                icon: Icons.code,
+                                title: l10n.license,
+                                subtitle: 'MIT License',
+                                onTap: () {
+                                  // TODO: Show license dialog
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    
+                    // Tab 2: Card Settings
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _SettingsSection(
+                            title: '排出設定',
+                            children: [
+                              _SettingsTile(
+                                icon: Icons.library_add_check,
+                                title: 'デフォルトセットを含める',
+                                subtitle: '組み込みのサンプルカードを排出に含めます',
+                                trailing: Switch(
+                                  value: settings.includeDefaultSet,
+                                  activeColor: const Color(0xFFD4AF37),
+                                  onChanged: (value) {
+                                    ref.read(gachaSettingsProvider.notifier).setIncludeDefaultSet(value);
+                                  },
+                                ),
+                              ),
+                              _SettingsTile(
+                                icon: Icons.person,
+                                title: l10n.characterCount,
+                                subtitle: l10n.characterCountDesc,
+                                trailing: _CounterWidget(
+                                  value: settings.characterCount,
+                                  maxValue: 10 - settings.storyCount,
+                                  onChanged: (value) {
+                                    ref.read(gachaSettingsProvider.notifier).setCharacterCount(value);
+                                  },
+                                ),
+                              ),
+                              _SettingsTile(
+                                icon: Icons.auto_stories,
+                                title: l10n.storyCount,
+                                subtitle: l10n.storyCountDesc,
+                                trailing: _CounterWidget(
+                                  value: settings.storyCount,
+                                  maxValue: 10 - settings.characterCount,
+                                  onChanged: (value) {
+                                    ref.read(gachaSettingsProvider.notifier).setStoryCount(value);
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 24),
+                          
+                          _SettingsSection(
+                            title: 'インポート済みセット',
+                            children: [
+                              if (ref.watch(customCardProvider).isEmpty)
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                                  child: Text(
+                                    'インポートされたセットはありません',
+                                    style: TextStyle(color: Colors.white38, fontSize: 12),
+                                  ),
+                                )
+                              else
+                                ...ref.watch(customCardProvider).map((set) => _SettingsTile(
+                                  icon: Icons.folder_zip,
+                                  title: set.name,
+                                  subtitle: '${set.cards.length} 枚のカード',
+                                  trailing: IconButton(
+                                    icon: const Icon(Icons.delete_outline, color: Colors.redAccent, size: 20),
+                                    onPressed: () {
+                                      ref.read(customCardProvider.notifier).deleteSet(set.id);
+                                    },
+                                  ),
+                                )),
+                            ],
+                          ),
+                          
+                          const SizedBox(height: 24),
+                          
+                          _SettingsSection(
+                            title: 'インポート',
+                            children: [
+                              _SettingsTile(
+                                icon: Icons.file_download,
+                                title: 'カスタムセットをインポート',
+                                subtitle: 'manifest.jsonを選択してください',
+                                onTap: () async {
+                                  final result = await FilePicker.platform.pickFiles(
+                                    type: FileType.custom,
+                                    allowedExtensions: ['json'],
+                                  );
+                                  
+                                  if (result != null && result.files.single.path != null) {
+                                    final file = File(result.files.single.path!);
+                                    final message = await ref.read(customCardProvider.notifier).importFromManifest(file);
+                                    if (context.mounted) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text(message)),
+                                      );
+                                    }
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

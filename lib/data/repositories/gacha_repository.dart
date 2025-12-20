@@ -32,6 +32,23 @@ class GachaRepository {
     ];
   }
 
+  List<CardModel> getCustomCards() {
+    return [
+      _createCard(
+        '神秘のクリスタル', 
+        '洞窟の最深部で浮遊する巨大な結晶。見る者のインスピレーションを増幅させる。', 
+        type: CardType.character, 
+        element: CardElement.light, 
+        rarity: CardRarity.mythic, 
+        power: 0, 
+        toughness: 10, 
+        manaCost: '5',
+        imagePath: 'assets/data/sample_set/images/crystal.png',
+        isAsset: true, // For this sample, it's bundled
+      ),
+    ];
+  }
+
   CardModel _createCard(
     String title, 
     String description, {
@@ -41,6 +58,9 @@ class GachaRepository {
     int? power,
     int? toughness,
     String? manaCost,
+    String? imagePath,
+    String? backImagePath,
+    bool isAsset = true,
   }) {
     return CardModel(
       id: _uuid.v4(),
@@ -52,6 +72,9 @@ class GachaRepository {
       power: power,
       toughness: toughness,
       manaCost: manaCost,
+      imagePath: imagePath,
+      backImagePath: backImagePath,
+      isAsset: isAsset,
     );
   }
 }

@@ -1,0 +1,19 @@
+{
+  "setName": "Sample Crystal Set",
+  "cards": [
+    {
+      "id": "custom_crystal_01",
+      "type": "character",
+      "title": "神秘のクリスタル",
+      "description": "洞窟の最深部で浮遊する巨大な結晶。見る者のインスピレーションを増幅させる。",
+      "flavorText": "その輝きは、まだ見ぬ物語の断片を映し出す。",
+      "rarity": "mythic",
+      "element": "light",
+      "power": 0,
+      "toughness": 10,
+      "manaCost": "5",
+      "imagePath": "assets/data/sample_set/images/crystal.png",
+      "isAsset": true
+    }
+  ]
+}
