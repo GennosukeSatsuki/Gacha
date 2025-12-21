@@ -48,5 +48,35 @@
   "about": "About",
   "version": "Version",
   "license": "License",
-  "github": "GitHub"
+  "github": "GitHub",
+  "basicSettings": "Basic Settings",
+  "cardSettings": "Card Settings",
+  "general": "General",
+  "emissionSettings": "Emission Settings",
+  "includeDefaultSet": "Include Default Set",
+  "includeDefaultSetDesc": "Include built-in sample cards in gacha pulls",
+  "importedSets": "Imported Sets",
+  "noImportedSets": "No imported sets",
+  "cardCountLabel": "{count} cards",
+  "@cardCountLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "import": "Import",
+  "importCustomSet": "Import Custom Set",
+  "selectManifestJson": "Please select manifest.json",
+  "importSuccess": "Successfully imported",
+  "importError": "Error: {error}",
+  "charCrystal": "Mysterious Crystal",
+  "charCrystalDesc": "A giant crystal floating in the deepest part of the cave. Amplifies the inspiration of those who see it.",
+  "elementFire": "Fire",
+  "elementWater": "Water",
+  "elementWind": "Wind",
+  "elementEarth": "Earth",
+  "elementLight": "Light",
+  "elementDark": "Dark",
+  "elementNeutral": "Neutral"
 }

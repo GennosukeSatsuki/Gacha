@@ -35,7 +35,7 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
     await prefs.setStringList(_keyCustomSets, jsonList);
   }
 
-  Future<String> importFromManifest(File manifestFile) async {
+  Future<String?> importFromManifest(File manifestFile) async {
     try {
       final content = await manifestFile.readAsString();
       final data = json.decode(content);
@@ -80,9 +80,9 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
 
       state = [...state, newSet];
       await _saveSets();
-      return 'Success';
+      return null;
     } catch (e) {
-      return 'Error: $e';
+      return e.toString();
     }
   }
 

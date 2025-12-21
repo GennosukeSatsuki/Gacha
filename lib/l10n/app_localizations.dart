@@ -385,6 +385,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'GitHub'**
   String get github;
+
+  /// No description provided for @basicSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Settings'**
+  String get basicSettings;
+
+  /// No description provided for @cardSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Settings'**
+  String get cardSettings;
+
+  /// No description provided for @general.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get general;
+
+  /// No description provided for @emissionSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Emission Settings'**
+  String get emissionSettings;
+
+  /// No description provided for @includeDefaultSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Include Default Set'**
+  String get includeDefaultSet;
+
+  /// No description provided for @includeDefaultSetDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Include built-in sample cards in gacha pulls'**
+  String get includeDefaultSetDesc;
+
+  /// No description provided for @importedSets.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported Sets'**
+  String get importedSets;
+
+  /// No description provided for @noImportedSets.
+  ///
+  /// In en, this message translates to:
+  /// **'No imported sets'**
+  String get noImportedSets;
+
+  /// No description provided for @cardCountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards'**
+  String cardCountLabel(int count);
+
+  /// No description provided for @import.
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get import;
+
+  /// No description provided for @importCustomSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Custom Set'**
+  String get importCustomSet;
+
+  /// No description provided for @selectManifestJson.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select manifest.json'**
+  String get selectManifestJson;
+
+  /// No description provided for @importSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully imported'**
+  String get importSuccess;
+
+  /// No description provided for @importError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {error}'**
+  String importError(Object error);
+
+  /// No description provided for @charCrystal.
+  ///
+  /// In en, this message translates to:
+  /// **'Mysterious Crystal'**
+  String get charCrystal;
+
+  /// No description provided for @charCrystalDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A giant crystal floating in the deepest part of the cave. Amplifies the inspiration of those who see it.'**
+  String get charCrystalDesc;
+
+  /// No description provided for @elementFire.
+  ///
+  /// In en, this message translates to:
+  /// **'Fire'**
+  String get elementFire;
+
+  /// No description provided for @elementWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Water'**
+  String get elementWater;
+
+  /// No description provided for @elementWind.
+  ///
+  /// In en, this message translates to:
+  /// **'Wind'**
+  String get elementWind;
+
+  /// No description provided for @elementEarth.
+  ///
+  /// In en, this message translates to:
+  /// **'Earth'**
+  String get elementEarth;
+
+  /// No description provided for @elementLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get elementLight;
+
+  /// No description provided for @elementDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get elementDark;
+
+  /// No description provided for @elementNeutral.
+  ///
+  /// In en, this message translates to:
+  /// **'Neutral'**
+  String get elementNeutral;
 }
 
 class _AppLocalizationsDelegate

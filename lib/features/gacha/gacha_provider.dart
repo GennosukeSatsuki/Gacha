@@ -40,7 +40,7 @@ class GachaController extends Notifier<List<GachaCardState>> {
     
     // Also include a sample bundled card if we still want that for now
     // (Optional: remove this if we only want truly imported cards)
-    final sampleCards = repository.getCustomCards();
+    final sampleCards = repository.getCustomCards(l10n);
     characters.addAll(sampleCards.where((c) => c.type == CardType.character));
 
     final selectedChars = _pickRandom(characters, settings.characterCount);

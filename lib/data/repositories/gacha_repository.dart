@@ -32,11 +32,11 @@ class GachaRepository {
     ];
   }
 
-  List<CardModel> getCustomCards() {
+  List<CardModel> getCustomCards(AppLocalizations l10n) {
     return [
       _createCard(
-        '神秘のクリスタル', 
-        '洞窟の最深部で浮遊する巨大な結晶。見る者のインスピレーションを増幅させる。', 
+        l10n.charCrystal, 
+        l10n.charCrystalDesc, 
         type: CardType.character, 
         element: CardElement.light, 
         rarity: CardRarity.mythic, 

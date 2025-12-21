@@ -75,9 +75,9 @@ class SettingsModal extends ConsumerWidget {
                 labelColor: const Color(0xFFD4AF37),
                 unselectedLabelColor: Colors.white60,
                 labelStyle: GoogleFonts.philosopher(fontWeight: FontWeight.bold),
-                tabs: const [
-                  Tab(text: '基本設定'),
-                  Tab(text: 'カード設定'),
+                tabs: [
+                  Tab(text: l10n.basicSettings),
+                  Tab(text: l10n.cardSettings),
                 ],
               ),
               
@@ -94,7 +94,7 @@ class SettingsModal extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _SettingsSection(
-                            title: '一般',
+                            title: l10n.general,
                             children: [
                               _SettingsTile(
                                 icon: Icons.language,
@@ -139,12 +139,12 @@ class SettingsModal extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _SettingsSection(
-                            title: '排出設定',
+                            title: l10n.emissionSettings,
                             children: [
                               _SettingsTile(
                                 icon: Icons.library_add_check,
-                                title: 'デフォルトセットを含める',
-                                subtitle: '組み込みのサンプルカードを排出に含めます',
+                                title: l10n.includeDefaultSet,
+                                subtitle: l10n.includeDefaultSetDesc,
                                 trailing: Switch(
                                   value: settings.includeDefaultSet,
                                   activeColor: const Color(0xFFD4AF37),
@@ -182,21 +182,21 @@ class SettingsModal extends ConsumerWidget {
                           const SizedBox(height: 24),
                           
                           _SettingsSection(
-                            title: 'インポート済みセット',
+                            title: l10n.importedSets,
                             children: [
                               if (ref.watch(customCardProvider).isEmpty)
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                                   child: Text(
-                                    'インポートされたセットはありません',
-                                    style: TextStyle(color: Colors.white38, fontSize: 12),
+                                    l10n.noImportedSets,
+                                    style: const TextStyle(color: Colors.white38, fontSize: 12),
                                   ),
                                 )
                               else
                                 ...ref.watch(customCardProvider).map((set) => _SettingsTile(
                                   icon: Icons.folder_zip,
                                   title: set.name,
-                                  subtitle: '${set.cards.length} 枚のカード',
+                                  subtitle: l10n.cardCountLabel(set.cards.length),
                                   trailing: IconButton(
                                     icon: const Icon(Icons.delete_outline, color: Colors.redAccent, size: 20),
                                     onPressed: () {
@@ -210,12 +210,12 @@ class SettingsModal extends ConsumerWidget {
                           const SizedBox(height: 24),
                           
                           _SettingsSection(
-                            title: 'インポート',
+                            title: l10n.import,
                             children: [
                               _SettingsTile(
                                 icon: Icons.file_download,
-                                title: 'カスタムセットをインポート',
-                                subtitle: 'manifest.jsonを選択してください',
+                                title: l10n.importCustomSet,
+                                subtitle: l10n.selectManifestJson,
                                 onTap: () async {
                                   final result = await FilePicker.platform.pickFiles(
                                     type: FileType.custom,
@@ -224,10 +224,13 @@ class SettingsModal extends ConsumerWidget {
                                   
                                   if (result != null && result.files.single.path != null) {
                                     final file = File(result.files.single.path!);
-                                    final message = await ref.read(customCardProvider.notifier).importFromManifest(file);
+                                    final error = await ref.read(customCardProvider.notifier).importFromManifest(file);
                                     if (context.mounted) {
+                                      final snackBarMessage = error == null 
+                                          ? l10n.importSuccess 
+                                          : l10n.importError(error);
                                       ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text(message)),
+                                        SnackBar(content: Text(snackBarMessage)),
                                       );
                                     }
                                   }

@@ -96,6 +96,25 @@ class CardWidget extends StatelessWidget {
   }
 }
 
+String _getElementName(CardElement element, AppLocalizations l10n) {
+  switch (element) {
+    case CardElement.fire:
+      return l10n.elementFire;
+    case CardElement.water:
+      return l10n.elementWater;
+    case CardElement.wind:
+      return l10n.elementWind;
+    case CardElement.earth:
+      return l10n.elementEarth;
+    case CardElement.light:
+      return l10n.elementLight;
+    case CardElement.dark:
+      return l10n.elementDark;
+    case CardElement.neutral:
+      return l10n.elementNeutral;
+  }
+}
+
 class _CardHeader extends StatelessWidget {
   final CardModel card;
   final double scaleFactor;
@@ -205,7 +224,7 @@ class _TypeLine extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final typeStr = card.type == CardType.character ? l10n.typeCreature : l10n.typeSorcery;
-    final elementStr = card.element.name[0].toUpperCase() + card.element.name.substring(1);
+    final elementStr = _getElementName(card.element, l10n);
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 6 * scaleFactor),

@@ -160,4 +160,79 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get github => 'GitHub';
+
+  @override
+  String get basicSettings => 'Basic Settings';
+
+  @override
+  String get cardSettings => 'Card Settings';
+
+  @override
+  String get general => 'General';
+
+  @override
+  String get emissionSettings => 'Emission Settings';
+
+  @override
+  String get includeDefaultSet => 'Include Default Set';
+
+  @override
+  String get includeDefaultSetDesc =>
+      'Include built-in sample cards in gacha pulls';
+
+  @override
+  String get importedSets => 'Imported Sets';
+
+  @override
+  String get noImportedSets => 'No imported sets';
+
+  @override
+  String cardCountLabel(int count) {
+    return '$count cards';
+  }
+
+  @override
+  String get import => 'Import';
+
+  @override
+  String get importCustomSet => 'Import Custom Set';
+
+  @override
+  String get selectManifestJson => 'Please select manifest.json';
+
+  @override
+  String get importSuccess => 'Successfully imported';
+
+  @override
+  String importError(Object error) {
+    return 'Error: $error';
+  }
+
+  @override
+  String get charCrystal => 'Mysterious Crystal';
+
+  @override
+  String get charCrystalDesc =>
+      'A giant crystal floating in the deepest part of the cave. Amplifies the inspiration of those who see it.';
+
+  @override
+  String get elementFire => 'Fire';
+
+  @override
+  String get elementWater => 'Water';
+
+  @override
+  String get elementWind => 'Wind';
+
+  @override
+  String get elementEarth => 'Earth';
+
+  @override
+  String get elementLight => 'Light';
+
+  @override
+  String get elementDark => 'Dark';
+
+  @override
+  String get elementNeutral => 'Neutral';
 }

@@ -49,5 +49,35 @@
   "about": "アプリについて",
   "version": "バージョン",
   "license": "ライセンス",
-  "github": "GitHub"
+  "github": "GitHub",
+  "basicSettings": "基本設定",
+  "cardSettings": "カード設定",
+  "general": "一般",
+  "emissionSettings": "排出設定",
+  "includeDefaultSet": "デフォルトセットを含める",
+  "includeDefaultSetDesc": "組み込みのサンプルカードを排出に含めます",
+  "importedSets": "インポート済みセット",
+  "noImportedSets": "インポートされたセットはありません",
+  "cardCountLabel": "{count} 枚のカード",
+  "@cardCountLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "import": "インポート",
+  "importCustomSet": "カスタムセットをインポート",
+  "selectManifestJson": "manifest.jsonを選択してください",
+  "importSuccess": "インポートに成功しました",
+  "importError": "エラー: {error}",
+  "charCrystal": "神秘のクリスタル",
+  "charCrystalDesc": "洞窟の最深部で浮遊する巨大な結晶。見る者のインスピレーションを増幅させる。",
+  "elementFire": "火",
+  "elementWater": "水",
+  "elementWind": "風",
+  "elementEarth": "地",
+  "elementLight": "光",
+  "elementDark": "闇",
+  "elementNeutral": "無"
 }

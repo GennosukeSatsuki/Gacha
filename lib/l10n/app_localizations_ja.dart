@@ -151,4 +151,77 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get github => 'GitHub';
+
+  @override
+  String get basicSettings => '基本設定';
+
+  @override
+  String get cardSettings => 'カード設定';
+
+  @override
+  String get general => '一般';
+
+  @override
+  String get emissionSettings => '排出設定';
+
+  @override
+  String get includeDefaultSet => 'デフォルトセットを含める';
+
+  @override
+  String get includeDefaultSetDesc => '組み込みのサンプルカードを排出に含めます';
+
+  @override
+  String get importedSets => 'インポート済みセット';
+
+  @override
+  String get noImportedSets => 'インポートされたセットはありません';
+
+  @override
+  String cardCountLabel(int count) {
+    return '$count 枚のカード';
+  }
+
+  @override
+  String get import => 'インポート';
+
+  @override
+  String get importCustomSet => 'カスタムセットをインポート';
+
+  @override
+  String get selectManifestJson => 'manifest.jsonを選択してください';
+
+  @override
+  String get importSuccess => 'インポートに成功しました';
+
+  @override
+  String importError(Object error) {
+    return 'エラー: $error';
+  }
+
+  @override
+  String get charCrystal => '神秘のクリスタル';
+
+  @override
+  String get charCrystalDesc => '洞窟の最深部で浮遊する巨大な結晶。見る者のインスピレーションを増幅させる。';
+
+  @override
+  String get elementFire => '火';
+
+  @override
+  String get elementWater => '水';
+
+  @override
+  String get elementWind => '風';
+
+  @override
+  String get elementEarth => '地';
+
+  @override
+  String get elementLight => '光';
+
+  @override
+  String get elementDark => '闇';
+
+  @override
+  String get elementNeutral => '無';
 }
