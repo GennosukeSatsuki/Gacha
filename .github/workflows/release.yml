@@ -198,6 +198,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Tweet
+        if: ${{ secrets.TWITTER_CONSUMER_KEY != '' }}
+        continue-on-error: true
         uses: ethomson/send-tweet-action@v1
         with:
           status: |
