@@ -78,9 +78,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
     - assets/images/cards/
-    - assets/images/cards/front/
     - assets/images/cards/back/
     - assets/data/sample_set/
     - assets/data/sample_set/images/
