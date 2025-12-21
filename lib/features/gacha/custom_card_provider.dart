@@ -291,6 +291,8 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
         return null;
       }
       return 'Failed to load manifest';
+    } catch (e) {
+      return e.toString();
     }
   }
 

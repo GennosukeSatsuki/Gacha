@@ -27,7 +27,7 @@ enum CardElement {
 }
 
 @freezed
-class CardModel with _$CardModel {
+abstract class CardModel with _$CardModel {
   const factory CardModel({
     required String id,
     required CardType type,
