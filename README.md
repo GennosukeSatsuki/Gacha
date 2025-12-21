@@ -17,7 +17,7 @@
 - 📂 **Custom Set Import**: Import and delete your own card sets (JSON/Images).
 - ⚙️ **Tabbed Settings**: Adjust basic and card settings with an organized UI.
 - 🌍 **Multi-language Support**: Supports Japanese and English (easy to add more languages).
-- 📱 **Cross-platform**: Runs on macOS, Windows, Linux, and Android.
+- 📱 **Cross-platform**: Runs on macOS (Apple Silicon), Windows, and Android.
 
 ## 🎮 How to Use
 

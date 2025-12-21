@@ -36,11 +36,10 @@ jobs:
           お使いのプラットフォームに応じて、以下のファイルをダウンロードしてください：
 
           - **Windows**: \`plot_mixer-windows-x64.zip\`
-          - **macOS (Apple Silicon)**: \`plot_mixer-macos-arm64.dmg\`
-          - **macOS (Intel)**: \`plot_mixer-macos-x64.dmg\`
+          - **macOS**: \`plot_mixer-macos.dmg\`
           - **Android**: \`plot_mixer-android.apk\`
 
-          ## � How to Install / インストール方法
+          ## 📝 How to Install / インストール方法
 
           ### Windows
           1. Download the ZIP file. / ZIPファイルをダウンロード
@@ -108,14 +107,7 @@ jobs:
   build-macos:
     name: Build macOS
     needs: create-release
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-          - arch: arm64
-            os: macos-14
-          - arch: x64
-            os: macos-13
+    runs-on: macos-14
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -129,7 +121,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build macOS (${{ matrix.arch }})
+      - name: Build macOS
         run: |
           flutter build macos --release
 
@@ -152,14 +144,14 @@ jobs:
             --icon "plot_mixer.app" 175 190 \
             --hide-extension "plot_mixer.app" \
             --app-drop-link 425 190 \
-            "plot_mixer-macos-${{ matrix.arch }}.dmg" \
+            "plot_mixer-macos.dmg" \
             "dmg_temp/" || \
-          hdiutil create -volname "Plot Mixer" -srcfolder dmg_temp -ov -format UDZO "plot_mixer-macos-${{ matrix.arch }}.dmg"
+          hdiutil create -volname "Plot Mixer" -srcfolder dmg_temp -ov -format UDZO "plot_mixer-macos.dmg"
 
       - name: Upload macOS Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: plot_mixer-macos-${{ matrix.arch }}.dmg
+          files: plot_mixer-macos.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
