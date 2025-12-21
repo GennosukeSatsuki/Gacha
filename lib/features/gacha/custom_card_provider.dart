@@ -145,13 +145,7 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
       final setsDir = await _getCustomSetsDir();
       
       String folderName = fileName.replaceAll(RegExp(r'[^\w\s-]'), '_');
-      Directory targetDir = Directory(p.join(setsDir.path, folderName));
-      
-      int counter = 1;
-      while (await targetDir.exists()) {
-        targetDir = Directory(p.join(setsDir.path, '${folderName}_$counter'));
-        counter++;
-      }
+      final targetDir = await _getUniqueDirectoryPath(folderName);
       await targetDir.create(recursive: true);
 
       for (final file in archive) {
@@ -201,12 +195,7 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
       String folderName = name.replaceAll(RegExp(r'[^\w\s-]'), '_').toLowerCase();
       if (folderName.isEmpty) folderName = 'unnamed_set';
       
-      Directory targetDir = Directory(p.join(setsDir.path, folderName));
-      int counter = 1;
-      while (await targetDir.exists()) {
-        targetDir = Directory(p.join(setsDir.path, '${folderName}_$counter'));
-        counter++;
-      }
+      final targetDir = await _getUniqueDirectoryPath(folderName);
       await targetDir.create(recursive: true);
 
       final manifest = {
@@ -276,13 +265,7 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
       final setsDir = await _getCustomSetsDir();
       final fileName = p.basenameWithoutExtension(manifestFile.path);
       String folderName = 'imported_$fileName';
-      Directory targetDir = Directory(p.join(setsDir.path, folderName));
-      
-      int counter = 1;
-      while (await targetDir.exists()) {
-        targetDir = Directory(p.join(setsDir.path, '${folderName}_$counter'));
-        counter++;
-      }
+      final targetDir = await _getUniqueDirectoryPath(folderName);
       await targetDir.create(recursive: true);
 
       await manifestFile.copy(p.join(targetDir.path, 'manifest.json'));
@@ -308,8 +291,19 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
         return null;
       }
       return 'Failed to load manifest';
-    } catch (e) {
-      return e.toString();
     }
+  }
+
+  Future<Directory> _getUniqueDirectoryPath(String baseFolderName) async {
+    final setsDir = await _getCustomSetsDir();
+    String folderName = baseFolderName;
+    Directory targetDir = Directory(p.join(setsDir.path, folderName));
+    
+    int counter = 1;
+    while (await targetDir.exists()) {
+      targetDir = Directory(p.join(setsDir.path, '${baseFolderName}_$counter'));
+      counter++;
+    }
+    return targetDir;
   }
 }

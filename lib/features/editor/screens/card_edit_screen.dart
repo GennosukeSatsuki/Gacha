@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:plot_mixer/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as p;
 import 'dart:typed_data';
-import 'dart:io';
 import '../widgets/image_crop_dialog.dart';
+import '../widgets/editor_fields.dart';
+import '../widgets/editor_preview_panel.dart';
 import '../../../domain/models/card_model.dart';
 import '../../../core/utils/l10n_utils.dart';
-import '../../gacha/card_widget.dart';
+import '../../../core/theme.dart';
 import '../../gacha/custom_card_provider.dart';
 
 class CardEditScreen extends ConsumerStatefulWidget {
@@ -44,17 +44,17 @@ class _CardEditScreenState extends ConsumerState<CardEditScreen> {
     final locale = Localizations.localeOf(context).languageCode;
 
     return Scaffold(
-      backgroundColor: const Color(0xFF16161E),
+      backgroundColor: AppTheme.background,
       appBar: AppBar(
         title: Text(
           widget.isNew ? l10n.newCard : l10n.editCard,
-          style: GoogleFonts.philosopher(color: const Color(0xFFD4AF37)),
+          style: AppTheme.headingStyle,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.check, color: Color(0xFFD4AF37)),
+            icon: const Icon(Icons.check, color: AppTheme.gold),
             onPressed: _save,
           ),
         ],
@@ -71,8 +71,8 @@ class _CardEditScreenState extends ConsumerState<CardEditScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildSectionTitle(l10n.basicInfo),
-                    _buildTextField(
+                    const EditorSectionTitle(title: 'Basic Info'),
+                    EditorTextField(
                       label: l10n.titleLabel,
                       initialValue: L10nUtils.getLocalizedText(_editingCard.getDisplayTitle(locale), l10n),
                       onChanged: (val) {
@@ -82,7 +82,7 @@ class _CardEditScreenState extends ConsumerState<CardEditScreen> {
                       },
                     ),
                     const SizedBox(height: 16),
-                    _buildTextField(
+                    EditorTextField(
                       label: l10n.descriptionLabel,
                       initialValue: L10nUtils.getLocalizedText(_editingCard.getDisplayDescription(locale), l10n),
                       maxLines: 3,
@@ -93,22 +93,20 @@ class _CardEditScreenState extends ConsumerState<CardEditScreen> {
                       },
                     ),
                     const SizedBox(height: 24),
-                    _buildSectionTitle(l10n.cardProperties),
+                    const EditorSectionTitle(title: 'Properties'),
                     Row(
                       children: [
-                        Expanded(child: _buildDropdown<CardType>(
+                        Expanded(child: EditorDropdown<CardType>(
                           label: l10n.typeLabel,
                           value: _editingCard.type,
                           items: CardType.values,
-                          l10n: l10n,
                           onChanged: (val) => setState(() => _editingCard = _editingCard.copyWith(type: val!)),
                         )),
                         const SizedBox(width: 16),
-                        Expanded(child: _buildDropdown<CardElement>(
+                        Expanded(child: EditorDropdown<CardElement>(
                           label: l10n.elementLabel,
                           value: _editingCard.element,
                           items: CardElement.values,
-                          l10n: l10n,
                           onChanged: (val) => setState(() => _editingCard = _editingCard.copyWith(element: val!)),
                         )),
                       ],
@@ -116,15 +114,14 @@ class _CardEditScreenState extends ConsumerState<CardEditScreen> {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        Expanded(child: _buildDropdown<CardRarity>(
+                        Expanded(child: EditorDropdown<CardRarity>(
                           label: l10n.rarityLabel,
                           value: _editingCard.rarity,
                           items: CardRarity.values,
-                          l10n: l10n,
                           onChanged: (val) => setState(() => _editingCard = _editingCard.copyWith(rarity: val!)),
                         )),
                         const SizedBox(width: 16),
-                        Expanded(child: _buildTextField(
+                        Expanded(child: EditorTextField(
                           label: l10n.manaCostLabel,
                           initialValue: _editingCard.manaCost ?? '',
                           onChanged: (val) => setState(() => _editingCard = _editingCard.copyWith(manaCost: val.isEmpty ? null : val)),
@@ -135,14 +132,14 @@ class _CardEditScreenState extends ConsumerState<CardEditScreen> {
                       const SizedBox(height: 16),
                       Row(
                         children: [
-                          Expanded(child: _buildTextField(
+                          Expanded(child: EditorTextField(
                             label: l10n.powerLabel,
                             initialValue: _editingCard.power?.toString() ?? '',
                             keyboardType: TextInputType.number,
                             onChanged: (val) => setState(() => _editingCard = _editingCard.copyWith(power: int.tryParse(val))),
                           )),
                           const SizedBox(width: 16),
-                          Expanded(child: _buildTextField(
+                          Expanded(child: EditorTextField(
                             label: l10n.toughnessLabel,
                             initialValue: _editingCard.toughness?.toString() ?? '',
                             keyboardType: TextInputType.number,
@@ -161,122 +158,12 @@ class _CardEditScreenState extends ConsumerState<CardEditScreen> {
           // Right Side: Live Preview
           Expanded(
             flex: 2,
-            child: Container(
-              color: Colors.black12,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      l10n.preview,
-                      style: GoogleFonts.philosopher(
-                        color: Colors.white24,
-                        letterSpacing: 4,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    CardWidget(
-                      card: _editingCard, 
-                      width: 220, 
-                      height: 320,
-                      onArtTap: _pickImage,
-                    ),
-                  ],
-                ),
-              ),
+            child: EditorPreviewPanel(
+              card: _editingCard,
+              onArtTap: _pickImage,
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Text(
-        title.toUpperCase(),
-        style: GoogleFonts.philosopher(
-          color: const Color(0xFFD4AF37),
-          fontSize: 14,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 1.2,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField({
-    required String label,
-    required String initialValue,
-    int maxLines = 1,
-    TextInputType? keyboardType,
-    required Function(String) onChanged,
-  }) {
-    return TextFormField(
-      initialValue: initialValue,
-      maxLines: maxLines,
-      keyboardType: keyboardType,
-      style: const TextStyle(color: Colors.white, fontSize: 14),
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: const TextStyle(color: Colors.white38),
-        filled: true,
-        fillColor: const Color(0xFF1E1E2E),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: const BorderSide(color: Color(0xFFD4AF37))),
-      ),
-      onChanged: onChanged,
-    );
-  }
-
-  Widget _buildDropdown<T extends Enum>({
-    required String label,
-    required T value,
-    required List<T> items,
-    required AppLocalizations l10n,
-    required Function(T?) onChanged,
-  }) {
-    return InputDecorator(
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: const TextStyle(color: Colors.white38),
-        filled: true,
-        fillColor: const Color(0xFF1E1E2E),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<T>(
-          value: value,
-          isExpanded: true,
-          dropdownColor: const Color(0xFF1E1E2E),
-          style: const TextStyle(color: Colors.white, fontSize: 14),
-          items: items.map((item) {
-            String labelText = item.name.toUpperCase();
-            if (item is CardType) {
-              labelText = item == CardType.character ? l10n.typeCharacter : l10n.typeStory;
-            } else if (item is CardElement) {
-              switch (item) {
-                case CardElement.fire: labelText = l10n.elementFire; break;
-                case CardElement.water: labelText = l10n.elementWater; break;
-                case CardElement.wind: labelText = l10n.elementWind; break;
-                case CardElement.earth: labelText = l10n.elementEarth; break;
-                case CardElement.light: labelText = l10n.elementLight; break;
-                case CardElement.dark: labelText = l10n.elementDark; break;
-                case CardElement.neutral: labelText = l10n.elementNeutral; break;
-              }
-            } else if (item is CardRarity) {
-              labelText = item.name.toUpperCase(); // Keep rarity as is or localize later
-            }
-            
-            return DropdownMenuItem(
-              value: item,
-              child: Text(labelText),
-            );
-          }).toList(),
-          onChanged: onChanged,
-        ),
       ),
     );
   }

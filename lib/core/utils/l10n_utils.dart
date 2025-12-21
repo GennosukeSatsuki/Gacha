@@ -1,4 +1,5 @@
 import 'package:plot_mixer/l10n/app_localizations.dart';
+import '../../domain/models/card_model.dart';
 
 class L10nUtils {
   static String getLocalizedText(String? key, AppLocalizations l10n) {
@@ -35,5 +36,27 @@ class L10nUtils {
       case 'storyTreasureMapDesc': return l10n.storyTreasureMapDesc;
       default: return key;
     }
+  }
+
+  static String getCardTypeLabel(CardType type, AppLocalizations l10n) {
+    return type == CardType.character ? l10n.typeCharacter : l10n.typeStory;
+  }
+
+  static String getElementLabel(CardElement element, AppLocalizations l10n) {
+    switch (element) {
+      case CardElement.fire: return l10n.elementFire;
+      case CardElement.water: return l10n.elementWater;
+      case CardElement.wind: return l10n.elementWind;
+      case CardElement.earth: return l10n.elementEarth;
+      case CardElement.light: return l10n.elementLight;
+      case CardElement.dark: return l10n.elementDark;
+      case CardElement.neutral: return l10n.elementNeutral;
+    }
+  }
+
+  static String getRarityLabel(CardRarity rarity, AppLocalizations l10n) {
+    // Rarity labels are currently just the enum name upper-cased
+    // but we can localize them if keys are added to .arb
+    return rarity.name.toUpperCase();
   }
 }
