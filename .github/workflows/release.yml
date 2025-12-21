@@ -236,13 +236,15 @@ jobs:
         with:
           status: |
             Idea Mixer v${{ needs.create-release.outputs.version }} をリリースしました！ 🚀
+            創作のインスピレーションを刺激するガチャ形式のアイデア生成ツールです。自作カード作成機能 (Studio) や画像切り抜き機能を実装した大型アップデート！🎨✂️
 
-            自作カード作成・編集機能（Studio）の追加や、イメージクロッパーの実装など、大型アップデートです。🎨✂️
+            Idea Mixer v${{ needs.create-release.outputs.version }} is out! 🚀
+            A gacha-style idea generator to spark your creative inspiration. This major update adds the "Studio" feature and an image cropper! 🎨✂️
 
-            詳細・ダウンロードはこちら：
+            Download here:
             https://github.com/${{ github.repository }}/releases/tag/v${{ needs.create-release.outputs.version }}
 
-            #IdeaMixer #Flutter #Gacha #GameDev #創作クラスタ
+            #IdeaMixer #Flutter #Gacha #IndieDev #WritingCommunity #創作クラスタ
           consumer-key: ${{ secrets.TWITTER_CONSUMER_KEY }}
           consumer-secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
           access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
