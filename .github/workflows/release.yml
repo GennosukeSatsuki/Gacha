@@ -225,3 +225,25 @@ jobs:
           asset_path: ./plot_mixer-android.apk
           asset_name: plot_mixer-android.apk
           asset_content_type: application/vnd.android.package-archive
+
+  notify:
+    name: Notify Social Media
+    needs: [create-release, build-windows, build-macos, build-android]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Tweet
+        uses: ethomson/send-tweet-action@v1
+        with:
+          status: |
+            Idea Mixer v${{ needs.create-release.outputs.version }} をリリースしました！ 🚀
+
+            自作カード作成・編集機能（Studio）の追加や、イメージクロッパーの実装など、大型アップデートです。🎨✂️
+
+            詳細・ダウンロードはこちら：
+            https://github.com/${{ github.repository }}/releases/tag/v${{ needs.create-release.outputs.version }}
+
+            #IdeaMixer #Flutter #Gacha #GameDev #創作クラスタ
+          consumer-key: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          consumer-secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
