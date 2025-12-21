@@ -108,14 +108,14 @@ jobs:
   build-macos:
     name: Build macOS
     needs: create-release
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         include:
           - arch: arm64
-            flutter_arch: arm64
+            os: macos-14
           - arch: x64
-            flutter_arch: x86_64
+            os: macos-13
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -131,7 +131,7 @@ jobs:
 
       - name: Build macOS (${{ matrix.arch }})
         run: |
-          flutter build macos --release --target-platform darwin-${{ matrix.flutter_arch }}
+          flutter build macos --release
 
       - name: Create DMG
         run: |
