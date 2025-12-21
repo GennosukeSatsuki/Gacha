@@ -102,10 +102,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get storyTreasureMapDesc => '隠された財宝を巡る冒険の幕開け。';
 
   @override
-  String get typeCreature => 'クリーチャー';
+  String get typeCharacter => 'キャラ';
 
   @override
-  String get typeSorcery => 'ソーサリー';
+  String get typeStory => 'ストーリー';
 
   @override
   String get settings => '設定';
@@ -224,4 +224,93 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get elementNeutral => '無';
+
+  @override
+  String get openCustomSetsFolder => 'セットフォルダを開く';
+
+  @override
+  String get selectZipOrJson => '.zip または manifest.json を選択してください';
+
+  @override
+  String get tabGacha => 'ガチャ';
+
+  @override
+  String get tabStudio => 'スタジオ';
+
+  @override
+  String get noSetsYet => 'カスタムセットがまだありません';
+
+  @override
+  String get createFirstSet => '最初のセットを作成';
+
+  @override
+  String get createNewSet => '新規セット作成';
+
+  @override
+  String get enterSetName => 'セット名を入力 (例: ミステリー)';
+
+  @override
+  String get cancel => 'キャンセル';
+
+  @override
+  String get create => '作成';
+
+  @override
+  String get setNotFound => 'セットが見つかりません';
+
+  @override
+  String get emptySet => 'このセットにはカードがありません';
+
+  @override
+  String get addFirstCard => '最初のカードを追加';
+
+  @override
+  String get deleteCard => 'カードを削除';
+
+  @override
+  String deleteCardConfirm(String title) {
+    return '「$title」を削除してもよろしいですか？';
+  }
+
+  @override
+  String get delete => '削除';
+
+  @override
+  String get newCard => '新規カード';
+
+  @override
+  String get editCard => 'カードの編集';
+
+  @override
+  String get basicInfo => '基本情報';
+
+  @override
+  String get cardProperties => '属性・ステータス';
+
+  @override
+  String get titleLabel => '名前';
+
+  @override
+  String get descriptionLabel => '説明';
+
+  @override
+  String get typeLabel => 'タイプ';
+
+  @override
+  String get elementLabel => '属性';
+
+  @override
+  String get rarityLabel => 'レアリティ';
+
+  @override
+  String get manaCostLabel => 'コスト';
+
+  @override
+  String get powerLabel => 'パワー';
+
+  @override
+  String get toughnessLabel => 'タフネス';
+
+  @override
+  String get preview => 'プレビュー';
 }

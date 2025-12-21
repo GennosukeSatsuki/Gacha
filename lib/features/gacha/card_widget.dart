@@ -1,24 +1,37 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:plot_mixer/l10n/app_localizations.dart';
 import '../../domain/models/card_model.dart';
+import '../../../core/utils/l10n_utils.dart';
+import '../../../l10n/app_localizations.dart';
+import 'widgets/card_components.dart';
 
 class CardWidget extends StatelessWidget {
   final CardModel card;
   final double width;
   final double height;
+  final VoidCallback? onArtTap;
 
   const CardWidget({
     super.key,
     required this.card,
     this.width = 280,
     this.height = 400,
+    this.onArtTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final scaleFactor = width / 280; // Base width is 280
+    final locale = Localizations.localeOf(context).languageCode;
+    
+    // Create a temporary "localized" model for the child components to use.
+    // They usually access .title / .description which our new getters handle.
+    // To ensure they get the correct one, we'll create a copy where the 
+    // current locale is explicitly set as the 'en' (default fallback) key.
+    final localizedCard = card.copyWith(
+      titles: {'en': card.getDisplayTitle(locale)},
+      descriptions: {'en': card.getDisplayDescription(locale)},
+      flavorTexts: {'en': card.getDisplayFlavorText(locale)},
+    );
     
     return Container(
       width: width,
@@ -28,7 +41,7 @@ class CardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(14 * scaleFactor),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.5),
+            color: Colors.black.withOpacity(0.5),
             blurRadius: 10 * scaleFactor,
             offset: Offset(4 * scaleFactor, 4 * scaleFactor),
           ),
@@ -51,22 +64,31 @@ class CardWidget extends StatelessWidget {
               child: Column(
                 children: [
                   // Name Header
-                  _CardHeader(card: card, scaleFactor: 1.0),
+                  CardHeader(card: localizedCard, scaleFactor: 1.0),
                   
                   // Art Frame
-                  _ArtFrame(card: card, scaleFactor: 1.0),
+                  ArtFrame(card: localizedCard, scaleFactor: 1.0, onTap: onArtTap),
                   
                   // Type Line
-                  _TypeLine(card: card, scaleFactor: 1.0),
+                  TypeLine(card: localizedCard, scaleFactor: 1.0),
                   
-                  // Text Box
+                  // Text Box & P/T Box Area
                   Expanded(
-                    child: _TextBox(card: card, scaleFactor: 1.0),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: TextBox(card: localizedCard, scaleFactor: 1.0),
+                        ),
+                        // P/T Box (only for characters)
+                        if (card.type == CardType.character && card.power != null)
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: PowerToughnessBox(card: localizedCard, scaleFactor: 1.0),
+                          ),
+                      ],
+                    ),
                   ),
-                  
-                  // P/T Box (only for characters)
-                  if (card.type == CardType.character && card.power != null)
-                    _PowerToughnessBox(card: card, scaleFactor: 1.0),
                 ],
               ),
             ),
@@ -93,273 +115,5 @@ class CardWidget extends StatelessWidget {
       case CardElement.neutral:
         return const Color(0xFFC0C0C0); // Artifact frame
     }
-  }
-}
-
-String _getElementName(CardElement element, AppLocalizations l10n) {
-  switch (element) {
-    case CardElement.fire:
-      return l10n.elementFire;
-    case CardElement.water:
-      return l10n.elementWater;
-    case CardElement.wind:
-      return l10n.elementWind;
-    case CardElement.earth:
-      return l10n.elementEarth;
-    case CardElement.light:
-      return l10n.elementLight;
-    case CardElement.dark:
-      return l10n.elementDark;
-    case CardElement.neutral:
-      return l10n.elementNeutral;
-  }
-}
-
-class _CardHeader extends StatelessWidget {
-  final CardModel card;
-  final double scaleFactor;
-  const _CardHeader({required this.card, this.scaleFactor = 1.0});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(6 * scaleFactor, 6 * scaleFactor, 6 * scaleFactor, 0),
-      padding: EdgeInsets.symmetric(horizontal: 10 * scaleFactor, vertical: 4 * scaleFactor),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.8),
-        borderRadius: BorderRadius.circular(4 * scaleFactor),
-        border: Border.all(color: Colors.black54),
-        gradient: LinearGradient(
-          colors: [Colors.white70, Colors.white.withValues(alpha: 0.9)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              card.title,
-              style: GoogleFonts.notoSerif(
-                fontSize: 16 * scaleFactor,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          if (card.manaCost != null)
-            Text(
-              card.manaCost!,
-              style: GoogleFonts.philosopher(
-                fontSize: 14 * scaleFactor,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ArtFrame extends StatelessWidget {
-  final CardModel card;
-  final double scaleFactor;
-  const _ArtFrame({required this.card, this.scaleFactor = 1.0});
-
-  @override
-  Widget build(BuildContext context) {
-    Widget? artContent;
-
-    if (card.imagePath != null) {
-      if (card.isAsset) {
-        artContent = Image.asset(
-          card.imagePath!,
-          fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) => _buildPlaceholder(),
-        );
-      } else {
-        artContent = Image.file(
-          File(card.imagePath!),
-          fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) => _buildPlaceholder(),
-        );
-      }
-    }
-
-    return Container(
-      margin: EdgeInsets.all(6 * scaleFactor),
-      height: 160 * scaleFactor,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.black12,
-        borderRadius: BorderRadius.circular(0),
-        border: Border.all(color: Colors.black87, width: 2 * scaleFactor),
-      ),
-      child: ClipRect(
-        child: artContent ?? _buildPlaceholder(),
-      ),
-    );
-  }
-
-  Widget _buildPlaceholder() {
-    return Center(
-      child: Icon(
-        card.type == CardType.character ? Icons.person : Icons.auto_stories,
-        size: 60 * scaleFactor,
-        color: Colors.black26,
-      ),
-    );
-  }
-}
-
-class _TypeLine extends StatelessWidget {
-  final CardModel card;
-  final double scaleFactor;
-  const _TypeLine({required this.card, this.scaleFactor = 1.0});
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final typeStr = card.type == CardType.character ? l10n.typeCreature : l10n.typeSorcery;
-    final elementStr = _getElementName(card.element, l10n);
-
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 6 * scaleFactor),
-      padding: EdgeInsets.symmetric(horizontal: 10 * scaleFactor, vertical: 3 * scaleFactor),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.8),
-        borderRadius: BorderRadius.circular(4 * scaleFactor),
-        border: Border.all(color: Colors.black54),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "$typeStr — $elementStr",
-            style: GoogleFonts.notoSerif(
-              fontSize: 12 * scaleFactor,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),
-          ),
-          _RarityIcon(rarity: card.rarity, scaleFactor: scaleFactor),
-        ],
-      ),
-    );
-  }
-}
-
-class _RarityIcon extends StatelessWidget {
-  final CardRarity rarity;
-  final double scaleFactor;
-  const _RarityIcon({required this.rarity, this.scaleFactor = 1.0});
-
-  @override
-  Widget build(BuildContext context) {
-    Color color;
-    switch (rarity) {
-      case CardRarity.common:
-        color = Colors.black;
-      case CardRarity.uncommon:
-        color = const Color(0xFF708090); // SlateGrey
-      case CardRarity.rare:
-        color = const Color(0xFFD4AF37); // Gold
-      case CardRarity.mythic:
-        color = const Color(0xFFFF4500); // orange-red
-    }
-    return Container(
-      width: 14 * scaleFactor,
-      height: 14 * scaleFactor,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.black87, width: 1 * scaleFactor),
-      ),
-    );
-  }
-}
-
-class _TextBox extends StatelessWidget {
-  final CardModel card;
-  final double scaleFactor;
-  const _TextBox({required this.card, this.scaleFactor = 1.0});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(6 * scaleFactor, 4 * scaleFactor, 6 * scaleFactor, 6 * scaleFactor),
-      padding: EdgeInsets.all(8 * scaleFactor),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.7),
-        border: Border.all(color: Colors.black45),
-        image: DecorationImage(
-          image: const AssetImage('assets/images/texture_paper.png'), // Future enhancement
-          fit: BoxFit.cover,
-          opacity: 0.1,
-          onError: (_, __) {},
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            card.description,
-            style: GoogleFonts.notoSerif(
-              fontSize: 12 * scaleFactor,
-              color: Colors.black87,
-              height: 1.2,
-            ),
-          ),
-          if (card.flavorText.isNotEmpty) ...[
-            const Spacer(),
-            const Divider(color: Colors.black26),
-            Text(
-              card.flavorText,
-              style: GoogleFonts.notoSerif(
-                fontSize: 11 * scaleFactor,
-                fontStyle: FontStyle.italic,
-                color: Colors.black87,
-              ),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-}
-
-class _PowerToughnessBox extends StatelessWidget {
-  final CardModel card;
-  final double scaleFactor;
-  const _PowerToughnessBox({required this.card, this.scaleFactor = 1.0});
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomRight,
-      child: Container(
-        margin: EdgeInsets.only(right: 8 * scaleFactor, bottom: 8 * scaleFactor),
-        padding: EdgeInsets.symmetric(horizontal: 8 * scaleFactor, vertical: 4 * scaleFactor),
-        decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.9),
-          borderRadius: BorderRadius.circular(4 * scaleFactor),
-          border: Border.all(color: Colors.black87, width: 1.5 * scaleFactor),
-          boxShadow: [
-            BoxShadow(color: Colors.black26, blurRadius: 2 * scaleFactor, offset: Offset(2 * scaleFactor, 2 * scaleFactor)),
-          ],
-        ),
-        child: Text(
-          "${card.power}/${card.toughness}",
-          style: GoogleFonts.philosopher(
-            fontSize: 14 * scaleFactor,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
   }
 }

@@ -111,10 +111,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Beginning of an adventure for hidden treasure.';
 
   @override
-  String get typeCreature => 'Creature';
+  String get typeCharacter => 'Character';
 
   @override
-  String get typeSorcery => 'Sorcery';
+  String get typeStory => 'Story';
 
   @override
   String get settings => 'Settings';
@@ -235,4 +235,93 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get elementNeutral => 'Neutral';
+
+  @override
+  String get openCustomSetsFolder => 'Open Sets Folder';
+
+  @override
+  String get selectZipOrJson => 'Select .zip or manifest.json';
+
+  @override
+  String get tabGacha => 'Gacha';
+
+  @override
+  String get tabStudio => 'Studio';
+
+  @override
+  String get noSetsYet => 'No custom sets yet';
+
+  @override
+  String get createFirstSet => 'Create Your First Set';
+
+  @override
+  String get createNewSet => 'Create New Set';
+
+  @override
+  String get enterSetName => 'Enter set name (e.g. Mystery)';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get create => 'Create';
+
+  @override
+  String get setNotFound => 'Set not found';
+
+  @override
+  String get emptySet => 'This set is empty';
+
+  @override
+  String get addFirstCard => 'Add Your First Card';
+
+  @override
+  String get deleteCard => 'Delete Card';
+
+  @override
+  String deleteCardConfirm(String title) {
+    return 'Are you sure you want to delete \"$title\"?';
+  }
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get newCard => 'New Card';
+
+  @override
+  String get editCard => 'Edit Card';
+
+  @override
+  String get basicInfo => 'Basic Info';
+
+  @override
+  String get cardProperties => 'Card Properties';
+
+  @override
+  String get titleLabel => 'Title';
+
+  @override
+  String get descriptionLabel => 'Description';
+
+  @override
+  String get typeLabel => 'Type';
+
+  @override
+  String get elementLabel => 'Element';
+
+  @override
+  String get rarityLabel => 'Rarity';
+
+  @override
+  String get manaCostLabel => 'Mana Cost';
+
+  @override
+  String get powerLabel => 'Power';
+
+  @override
+  String get toughnessLabel => 'Toughness';
+
+  @override
+  String get preview => 'PREVIEW';
 }

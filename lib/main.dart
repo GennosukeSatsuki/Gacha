@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:plot_mixer/l10n/app_localizations.dart';
 import 'core/theme.dart';
-import 'features/gacha/gacha_screen.dart';
+import 'features/main/main_screen.dart';
 import 'features/gacha/gacha_settings_provider.dart';
 
 void main() {
@@ -20,6 +20,7 @@ class PlotMixerApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Plot Mixer',
       theme: AppTheme.darkTheme,
+      debugShowCheckedModeBanner: false,
       locale: Locale(settings.locale),
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -31,7 +32,7 @@ class PlotMixerApp extends ConsumerWidget {
         Locale('en'), // English
         Locale('ja'), // Japanese
       ],
-      home: const GachaScreen(),
+      home: const MainScreen(),
     );
   }
 }

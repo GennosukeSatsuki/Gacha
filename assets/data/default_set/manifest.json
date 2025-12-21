@@ -1,0 +1,133 @@
+{
+  "setName": "Default Set",
+  "cards": [
+    {
+      "type": "character",
+      "title": "charDragon",
+      "description": "charDragonDesc",
+      "element": "fire",
+      "rarity": "rare",
+      "power": 5,
+      "toughness": 5,
+      "manaCost": "3RR"
+    },
+    {
+      "type": "character",
+      "title": "charElf",
+      "description": "charElfDesc",
+      "element": "wind",
+      "rarity": "uncommon",
+      "power": 1,
+      "toughness": 1,
+      "manaCost": "G"
+    },
+    {
+      "type": "character",
+      "title": "charDwarf",
+      "description": "charDwarfDesc",
+      "element": "earth",
+      "rarity": "common",
+      "power": 2,
+      "toughness": 3,
+      "manaCost": "1R"
+    },
+    {
+      "type": "character",
+      "title": "charGoblin",
+      "description": "charGoblinDesc",
+      "element": "fire",
+      "rarity": "common",
+      "power": 1,
+      "toughness": 1,
+      "manaCost": "R"
+    },
+    {
+      "type": "character",
+      "title": "charGirl",
+      "description": "charGirlDesc",
+      "element": "light",
+      "rarity": "uncommon",
+      "power": 2,
+      "toughness": 2,
+      "manaCost": "1W"
+    },
+    {
+      "type": "character",
+      "title": "charSalaryman",
+      "description": "charSalarymanDesc",
+      "element": "neutral",
+      "rarity": "common",
+      "power": 1,
+      "toughness": 1,
+      "manaCost": "2"
+    },
+    {
+      "type": "character",
+      "title": "charHero",
+      "description": "charHeroDesc",
+      "element": "light",
+      "rarity": "rare",
+      "power": 3,
+      "toughness": 3,
+      "manaCost": "1WW"
+    },
+    {
+      "type": "character",
+      "title": "charDemonKing",
+      "description": "charDemonKingDesc",
+      "element": "dark",
+      "rarity": "mythic",
+      "power": 6,
+      "toughness": 6,
+      "manaCost": "4BB"
+    },
+    {
+      "type": "story",
+      "title": "storyOfficeRomance",
+      "description": "storyOfficeRomanceDesc",
+      "element": "light",
+      "rarity": "common",
+      "manaCost": "1W"
+    },
+    {
+      "type": "story",
+      "title": "storyChanceEncounter",
+      "description": "storyChanceEncounterDesc",
+      "element": "wind",
+      "rarity": "common",
+      "manaCost": "U"
+    },
+    {
+      "type": "story",
+      "title": "storyStormyNight",
+      "description": "storyStormyNightDesc",
+      "element": "water",
+      "rarity": "uncommon",
+      "manaCost": "2U"
+    },
+    {
+      "type": "story",
+      "title": "storyTimeLeap",
+      "description": "storyTimeLeapDesc",
+      "element": "wind",
+      "rarity": "rare",
+      "manaCost": "4UU"
+    },
+    {
+      "type": "story",
+      "title": "storyBetrayal",
+      "description": "storyBetrayalDesc",
+      "element": "dark",
+      "rarity": "uncommon",
+      "manaCost": "1B"
+    },
+    {
+      "type": "story",
+      "title": "storyTreasureMap",
+      "description": "storyTreasureMapDesc",
+      "element": "earth",
+      "rarity": "common",
+      "manaCost": "1"
+    }
+  ]
+}

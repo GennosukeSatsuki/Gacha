@@ -284,17 +284,17 @@ abstract class AppLocalizations {
   /// **'Beginning of an adventure for hidden treasure.'**
   String get storyTreasureMapDesc;
 
-  /// No description provided for @typeCreature.
+  /// No description provided for @typeCharacter.
   ///
   /// In en, this message translates to:
-  /// **'Creature'**
-  String get typeCreature;
+  /// **'Character'**
+  String get typeCharacter;
 
-  /// No description provided for @typeSorcery.
+  /// No description provided for @typeStory.
   ///
   /// In en, this message translates to:
-  /// **'Sorcery'**
-  String get typeSorcery;
+  /// **'Story'**
+  String get typeStory;
 
   /// No description provided for @settings.
   ///
@@ -523,6 +523,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Neutral'**
   String get elementNeutral;
+
+  /// No description provided for @openCustomSetsFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Sets Folder'**
+  String get openCustomSetsFolder;
+
+  /// No description provided for @selectZipOrJson.
+  ///
+  /// In en, this message translates to:
+  /// **'Select .zip or manifest.json'**
+  String get selectZipOrJson;
+
+  /// No description provided for @tabGacha.
+  ///
+  /// In en, this message translates to:
+  /// **'Gacha'**
+  String get tabGacha;
+
+  /// No description provided for @tabStudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Studio'**
+  String get tabStudio;
+
+  /// No description provided for @noSetsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No custom sets yet'**
+  String get noSetsYet;
+
+  /// No description provided for @createFirstSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Your First Set'**
+  String get createFirstSet;
+
+  /// No description provided for @createNewSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Set'**
+  String get createNewSet;
+
+  /// No description provided for @enterSetName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter set name (e.g. Mystery)'**
+  String get enterSetName;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
+
+  /// No description provided for @setNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Set not found'**
+  String get setNotFound;
+
+  /// No description provided for @emptySet.
+  ///
+  /// In en, this message translates to:
+  /// **'This set is empty'**
+  String get emptySet;
+
+  /// No description provided for @addFirstCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Your First Card'**
+  String get addFirstCard;
+
+  /// No description provided for @deleteCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Card'**
+  String get deleteCard;
+
+  /// No description provided for @deleteCardConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete \"{title}\"?'**
+  String deleteCardConfirm(String title);
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @newCard.
+  ///
+  /// In en, this message translates to:
+  /// **'New Card'**
+  String get newCard;
+
+  /// No description provided for @editCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Card'**
+  String get editCard;
+
+  /// No description provided for @basicInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Info'**
+  String get basicInfo;
+
+  /// No description provided for @cardProperties.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Properties'**
+  String get cardProperties;
+
+  /// No description provided for @titleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get titleLabel;
+
+  /// No description provided for @descriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get descriptionLabel;
+
+  /// No description provided for @typeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get typeLabel;
+
+  /// No description provided for @elementLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Element'**
+  String get elementLabel;
+
+  /// No description provided for @rarityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rarity'**
+  String get rarityLabel;
+
+  /// No description provided for @manaCostLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mana Cost'**
+  String get manaCostLabel;
+
+  /// No description provided for @powerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Power'**
+  String get powerLabel;
+
+  /// No description provided for @toughnessLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Toughness'**
+  String get toughnessLabel;
+
+  /// No description provided for @preview.
+  ///
+  /// In en, this message translates to:
+  /// **'PREVIEW'**
+  String get preview;
 }
 
 class _AppLocalizationsDelegate

@@ -32,8 +32,8 @@
   "storyBetrayalDesc": "信頼していた仲間の予想外の行動。",
   "storyTreasureMap": "宝の地図",
   "storyTreasureMapDesc": "隠された財宝を巡る冒険の幕開け。",
-  "typeCreature": "クリーチャー",
-  "typeSorcery": "ソーサリー",
+  "typeCharacter": "キャラ",
+  "typeStory": "ストーリー",
   
   "settings": "設定",
   "gachaSettings": "ガチャ設定",
@@ -79,5 +79,39 @@
   "elementEarth": "地",
   "elementLight": "光",
   "elementDark": "闇",
-  "elementNeutral": "無"
+  "elementNeutral": "無",
+  "openCustomSetsFolder": "セットフォルダを開く",
+  "selectZipOrJson": ".zip または manifest.json を選択してください",
+  "tabGacha": "ガチャ",
+  "tabStudio": "スタジオ",
+  "noSetsYet": "カスタムセットがまだありません",
+  "createFirstSet": "最初のセットを作成",
+  "createNewSet": "新規セット作成",
+  "enterSetName": "セット名を入力 (例: ミステリー)",
+  "cancel": "キャンセル",
+  "create": "作成",
+  "setNotFound": "セットが見つかりません",
+  "emptySet": "このセットにはカードがありません",
+  "addFirstCard": "最初のカードを追加",
+  "deleteCard": "カードを削除",
+  "deleteCardConfirm": "「{title}」を削除してもよろしいですか？",
+  "@deleteCardConfirm": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+  "delete": "削除",
+  "newCard": "新規カード",
+  "editCard": "カードの編集",
+  "basicInfo": "基本情報",
+  "cardProperties": "属性・ステータス",
+  "titleLabel": "名前",
+  "descriptionLabel": "説明",
+  "typeLabel": "タイプ",
+  "elementLabel": "属性",
+  "rarityLabel": "レアリティ",
+  "manaCostLabel": "コスト",
+  "powerLabel": "パワー",
+  "toughnessLabel": "タフネス",
+  "preview": "プレビュー"
 }

@@ -31,8 +31,8 @@
   "storyBetrayalDesc": "Unexpected action from a trusted ally.",
   "storyTreasureMap": "Treasure Map",
   "storyTreasureMapDesc": "Beginning of an adventure for hidden treasure.",
-  "typeCreature": "Creature",
-  "typeSorcery": "Sorcery",
+  "typeCharacter": "Character",
+  "typeStory": "Story",
   
   "settings": "Settings",
   "gachaSettings": "Gacha Settings",
@@ -78,5 +78,39 @@
   "elementEarth": "Earth",
   "elementLight": "Light",
   "elementDark": "Dark",
-  "elementNeutral": "Neutral"
+  "elementNeutral": "Neutral",
+  "openCustomSetsFolder": "Open Sets Folder",
+  "selectZipOrJson": "Select .zip or manifest.json",
+  "tabGacha": "Gacha",
+  "tabStudio": "Studio",
+  "noSetsYet": "No custom sets yet",
+  "createFirstSet": "Create Your First Set",
+  "createNewSet": "Create New Set",
+  "enterSetName": "Enter set name (e.g. Mystery)",
+  "cancel": "Cancel",
+  "create": "Create",
+  "setNotFound": "Set not found",
+  "emptySet": "This set is empty",
+  "addFirstCard": "Add Your First Card",
+  "deleteCard": "Delete Card",
+  "deleteCardConfirm": "Are you sure you want to delete \"{title}\"?",
+  "@deleteCardConfirm": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+  "delete": "Delete",
+  "newCard": "New Card",
+  "editCard": "Edit Card",
+  "basicInfo": "Basic Info",
+  "cardProperties": "Card Properties",
+  "titleLabel": "Title",
+  "descriptionLabel": "Description",
+  "typeLabel": "Type",
+  "elementLabel": "Element",
+  "rarityLabel": "Rarity",
+  "manaCostLabel": "Mana Cost",
+  "powerLabel": "Power",
+  "toughnessLabel": "Toughness",
+  "preview": "PREVIEW"
 }

@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 enum CardType {
   character,
   story,
@@ -23,9 +25,9 @@ enum CardElement {
 class CardModel {
   final String id;
   final CardType type;
-  final String title;
-  final String description;
-  final String flavorText;
+  final Map<String, String> titles;
+  final Map<String, String> descriptions;
+  final Map<String, String> flavorTexts;
   final List<String> tags;
   final CardRarity rarity;
   final CardElement element;
@@ -39,9 +41,9 @@ class CardModel {
   const CardModel({
     required this.id,
     required this.type,
-    required this.title,
-    this.description = '',
-    this.flavorText = '',
+    this.titles = const {},
+    this.descriptions = const {},
+    this.flavorTexts = const {},
     this.tags = const [],
     this.rarity = CardRarity.common,
     this.element = CardElement.neutral,
@@ -53,12 +55,38 @@ class CardModel {
     this.isAsset = true,
   });
 
+  // Convenience getters for backward compatibility or simple access
+  String get title => _getLocalized(titles, 'Unknown');
+  String get description => _getLocalized(descriptions, '');
+  String get flavorText => _getLocalized(flavorTexts, '');
+
+  String getDisplayTitle(String locale) => _getLocalized(titles, 'Unknown', preferredLocale: locale);
+  String getDisplayDescription(String locale) => _getLocalized(descriptions, '', preferredLocale: locale);
+  String getDisplayFlavorText(String locale) => _getLocalized(flavorTexts, '', preferredLocale: locale);
+
+  String _getLocalized(Map<String, String> map, String fallbackValue, {String? preferredLocale}) {
+    if (map.isEmpty) return fallbackValue;
+    
+    // 1. Try preferred locale (e.g. 'ja')
+    if (preferredLocale != null && map.containsKey(preferredLocale) && map[preferredLocale]!.isNotEmpty) {
+      return map[preferredLocale]!;
+    }
+    
+    // 2. Try English as default fallback
+    if (map.containsKey('en') && map['en']!.isNotEmpty) {
+      return map['en']!;
+    }
+    
+    // 3. Just return the first one available
+    return map.values.firstWhere((v) => v.isNotEmpty, orElse: () => fallbackValue);
+  }
+
   CardModel copyWith({
     String? id,
     CardType? type,
-    String? title,
-    String? description,
-    String? flavorText,
+    Map<String, String>? titles,
+    Map<String, String>? descriptions,
+    Map<String, String>? flavorTexts,
     List<String>? tags,
     CardRarity? rarity,
     CardElement? element,
@@ -72,9 +100,9 @@ class CardModel {
     return CardModel(
       id: id ?? this.id,
       type: type ?? this.type,
-      title: title ?? this.title,
-      description: description ?? this.description,
-      flavorText: flavorText ?? this.flavorText,
+      titles: titles ?? this.titles,
+      descriptions: descriptions ?? this.descriptions,
+      flavorTexts: flavorTexts ?? this.flavorTexts,
       tags: tags ?? this.tags,
       rarity: rarity ?? this.rarity,
       element: element ?? this.element,
@@ -89,17 +117,20 @@ class CardModel {
 
   factory CardModel.fromJson(Map<String, dynamic> json) {
     return CardModel(
-      id: json['id'] as String,
-      type: CardType.values.firstWhere((e) => e.name == json['type']),
-      title: json['title'] as String,
-      description: json['description'] as String? ?? '',
-      flavorText: json['flavorText'] as String? ?? '',
+      id: json['id'] as String? ?? const Uuid().v4(),
+      type: CardType.values.firstWhere(
+        (e) => e.name == (json['type'] as String?),
+        orElse: () => CardType.character,
+      ),
+      titles: _parseLocalizedField(json['title']),
+      descriptions: _parseLocalizedField(json['description']),
+      flavorTexts: _parseLocalizedField(json['flavorText']),
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
       rarity: json['rarity'] != null 
-          ? CardRarity.values.firstWhere((e) => e.name == json['rarity'])
+          ? CardRarity.values.firstWhere((e) => e.name == json['rarity'], orElse: () => CardRarity.common)
           : CardRarity.common,
       element: json['element'] != null
-          ? CardElement.values.firstWhere((e) => e.name == json['element'])
+          ? CardElement.values.firstWhere((e) => e.name == json['element'], orElse: () => CardElement.neutral)
           : CardElement.neutral,
       power: json['power'] as int?,
       toughness: json['toughness'] as int?,
@@ -110,13 +141,22 @@ class CardModel {
     );
   }
 
+  static Map<String, String> _parseLocalizedField(dynamic value) {
+    if (value == null) return {};
+    if (value is String) return {'en': value};
+    if (value is Map) {
+      return value.map((key, val) => MapEntry(key.toString(), val.toString()));
+    }
+    return {};
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'type': type.name,
-      'title': title,
-      'description': description,
-      'flavorText': flavorText,
+      'title': titles,
+      'description': descriptions,
+      'flavorText': flavorTexts,
       'tags': tags,
       'rarity': rarity.name,
       'element': element.name,
