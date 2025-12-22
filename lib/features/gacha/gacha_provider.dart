@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:plot_mixer/l10n/app_localizations.dart';
+import 'package:idea_mixer/l10n/app_localizations.dart';
 import '../../domain/models/card_model.dart';
 import 'gacha_card_state.dart';
 import 'gacha_settings_provider.dart';

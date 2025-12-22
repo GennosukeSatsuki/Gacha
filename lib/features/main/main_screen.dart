@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plot_mixer/l10n/app_localizations.dart';
+import 'package:idea_mixer/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../gacha/gacha_screen.dart';
 import '../editor/screens/set_list_screen.dart';

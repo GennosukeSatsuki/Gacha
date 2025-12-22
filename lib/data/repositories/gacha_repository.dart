@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
-import 'package:plot_mixer/l10n/app_localizations.dart';
+import 'package:idea_mixer/l10n/app_localizations.dart';
 import '../../domain/models/card_model.dart';
 
 final gachaRepositoryProvider = Provider((ref) => GachaRepository());

@@ -35,9 +35,9 @@ jobs:
           Please download the file for your platform:
           お使いのプラットフォームに応じて、以下のファイルをダウンロードしてください：
 
-          - **Windows**: \`plot_mixer-windows-x64.zip\`
-          - **macOS**: \`plot_mixer-macos.dmg\`
-          - **Android**: \`plot_mixer-android.apk\`
+          - **Windows**: \`idea_mixer-windows-x64.zip\`
+          - **macOS**: \`idea_mixer-macos.dmg\`
+          - **Android**: \`idea_mixer-android.apk\`
 
           ## 📝 How to Install / インストール方法
 
@@ -95,12 +95,12 @@ jobs:
 
       - name: Create Windows archive
         run: |
-          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath plot_mixer-windows-x64.zip
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath idea_mixer-windows-x64.zip
 
       - name: Upload Windows Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: plot_mixer-windows-x64.zip
+          files: idea_mixer-windows-x64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -132,26 +132,26 @@ jobs:
           
           # Create a temporary directory for DMG contents
           mkdir -p dmg_temp
-          cp -R build/macos/Build/Products/Release/plot_mixer.app dmg_temp/
+          cp -R build/macos/Build/Products/Release/idea_mixer.app dmg_temp/
           
           # Create DMG
           create-dmg \
-            --volname "Plot Mixer" \
+            --volname "Idea Mixer" \
             --volicon "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" \
             --window-pos 200 120 \
             --window-size 600 400 \
             --icon-size 100 \
-            --icon "plot_mixer.app" 175 190 \
-            --hide-extension "plot_mixer.app" \
+            --icon "idea_mixer.app" 175 190 \
+            --hide-extension "idea_mixer.app" \
             --app-drop-link 425 190 \
-            "plot_mixer-macos.dmg" \
+            "idea_mixer-macos.dmg" \
             "dmg_temp/" || \
-          hdiutil create -volname "Plot Mixer" -srcfolder dmg_temp -ov -format UDZO "plot_mixer-macos.dmg"
+          hdiutil create -volname "Idea Mixer" -srcfolder dmg_temp -ov -format UDZO "idea_mixer-macos.dmg"
 
       - name: Upload macOS Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: plot_mixer-macos.dmg
+          files: idea_mixer-macos.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -183,12 +183,12 @@ jobs:
 
       - name: Rename APK
         run: |
-          cp build/app/outputs/flutter-apk/app-release.apk plot_mixer-android.apk
+          cp build/app/outputs/flutter-apk/app-release.apk idea_mixer-android.apk
 
       - name: Upload Android Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: plot_mixer-android.apk
+          files: idea_mixer-android.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

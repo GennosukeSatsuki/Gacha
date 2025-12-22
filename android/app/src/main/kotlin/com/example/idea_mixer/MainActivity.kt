@@ -1,4 +1,4 @@
-package com.example.plot_mixer
+package com.example.idea_mixer
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plot_mixer/l10n/app_localizations.dart';
+import 'package:idea_mixer/l10n/app_localizations.dart';
 import 'gacha_provider.dart';
 import 'settings_modal.dart';
 import 'widgets/gacha_widgets.dart';

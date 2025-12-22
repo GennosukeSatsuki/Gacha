@@ -1,4 +1,4 @@
-import 'package:plot_mixer/l10n/app_localizations.dart';
+import 'package:idea_mixer/l10n/app_localizations.dart';
 import '../../domain/models/card_model.dart';
 
 class L10nUtils {

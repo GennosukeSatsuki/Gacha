@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:plot_mixer/l10n/app_localizations.dart';
+import 'package:idea_mixer/l10n/app_localizations.dart';
 import 'core/theme.dart';
 import 'features/main/main_screen.dart';
 import 'features/gacha/gacha_settings_provider.dart';
 
 void main() {
-  runApp(const ProviderScope(child: PlotMixerApp()));
+  runApp(const ProviderScope(child: IdeaMixerApp()));
 }
 
-class PlotMixerApp extends ConsumerWidget {
-  const PlotMixerApp({super.key});
+class IdeaMixerApp extends ConsumerWidget {
+  const IdeaMixerApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(gachaSettingsProvider);
     
     return MaterialApp(
-      title: 'Plot Mixer',
+      title: 'Idea Mixer',
       theme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       locale: Locale(settings.locale),
