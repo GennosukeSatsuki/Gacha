@@ -202,7 +202,7 @@ jobs:
     steps:
       - name: Send Tweet
         # Only run if Twitter secrets are configured
-        if: secrets.TWITTER_CONSUMER_API_KEY != ''
+        if: ${{ secrets.TWITTER_CONSUMER_API_KEY != '' }}
         continue-on-error: true
         uses: ethomson/send-tweet-action@v1
         with:
