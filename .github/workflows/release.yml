@@ -201,7 +201,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Tweet
-        # Skipped if Twitter secrets are not configured (will fail silently)
+        # Only run if Twitter secrets are configured
+        if: secrets.TWITTER_CONSUMER_API_KEY != ''
         continue-on-error: true
         uses: ethomson/send-tweet-action@v1
         with:
@@ -216,7 +217,7 @@ jobs:
             https://github.com/${{ github.repository }}/releases/tag/v${{ needs.create-release.outputs.version }}
 
             #IdeaMixer #Flutter #Gacha #IndieDev #WritingCommunity #創作クラスタ
-          consumer-key: ${{ secrets.TWITTER_CONSUMER_KEY }}
-          consumer-secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+          consumer-secret: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
           access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
           access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
