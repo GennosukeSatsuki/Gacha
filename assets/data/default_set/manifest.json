@@ -2,132 +2,2456 @@
   "setName": "Default Set",
   "cards": [
     {
+      "id": "charDragon",
       "type": "character",
-      "title": "charDragon",
-      "description": "charDragonDesc",
-      "element": "fire",
+      "titles": {
+        "en": "Ancient Dragon",
+        "ja": "ドラゴン"
+      },
+      "descriptions": {
+        "en": "charDragonDesc",
+        "ja": "charDragonDesc"
+      },
       "rarity": "rare",
+      "element": "fire",
       "power": 5,
       "toughness": 5,
       "manaCost": "3RR"
     },
     {
+      "id": "charElf",
       "type": "character",
-      "title": "charElf",
-      "description": "charElfDesc",
-      "element": "wind",
+      "titles": {
+        "en": "Elf",
+        "ja": "エルフ"
+      },
+      "descriptions": {
+        "en": "charElfDesc",
+        "ja": "charElfDesc"
+      },
       "rarity": "uncommon",
+      "element": "wind",
       "power": 1,
       "toughness": 1,
       "manaCost": "G"
     },
     {
+      "id": "charDwarf",
       "type": "character",
-      "title": "charDwarf",
-      "description": "charDwarfDesc",
-      "element": "earth",
+      "titles": {
+        "en": "Dwarf",
+        "ja": "ドワーフ"
+      },
+      "descriptions": {
+        "en": "charDwarfDesc",
+        "ja": "charDwarfDesc"
+      },
       "rarity": "common",
+      "element": "earth",
       "power": 2,
       "toughness": 3,
       "manaCost": "1R"
     },
     {
+      "id": "charGoblin",
       "type": "character",
-      "title": "charGoblin",
-      "description": "charGoblinDesc",
-      "element": "fire",
+      "titles": {
+        "en": "Goblin",
+        "ja": "ゴブリン"
+      },
+      "descriptions": {
+        "en": "charGoblinDesc",
+        "ja": "charGoblinDesc"
+      },
       "rarity": "common",
+      "element": "fire",
       "power": 1,
       "toughness": 1,
       "manaCost": "R"
     },
     {
+      "id": "charGirl",
       "type": "character",
-      "title": "charGirl",
-      "description": "charGirlDesc",
-      "element": "light",
+      "titles": {
+        "en": "Student",
+        "ja": "女子高生"
+      },
+      "descriptions": {
+        "en": "charGirlDesc",
+        "ja": "charGirlDesc"
+      },
       "rarity": "uncommon",
+      "element": "light",
       "power": 2,
       "toughness": 2,
       "manaCost": "1W"
     },
     {
+      "id": "charSalaryman",
       "type": "character",
-      "title": "charSalaryman",
-      "description": "charSalarymanDesc",
-      "element": "neutral",
+      "titles": {
+        "en": "Salaryman",
+        "ja": "おじさん"
+      },
+      "descriptions": {
+        "en": "charSalarymanDesc",
+        "ja": "charSalarymanDesc"
+      },
       "rarity": "common",
+      "element": "neutral",
       "power": 1,
       "toughness": 1,
       "manaCost": "2"
     },
     {
+      "id": "charHero",
       "type": "character",
-      "title": "charHero",
-      "description": "charHeroDesc",
-      "element": "light",
+      "titles": {
+        "en": "Hero",
+        "ja": "勇者"
+      },
+      "descriptions": {
+        "en": "charHeroDesc",
+        "ja": "charHeroDesc"
+      },
       "rarity": "rare",
+      "element": "light",
       "power": 3,
       "toughness": 3,
       "manaCost": "1WW"
     },
     {
+      "id": "charDemonKing",
       "type": "character",
-      "title": "charDemonKing",
-      "description": "charDemonKingDesc",
-      "element": "dark",
+      "titles": {
+        "en": "Demon King",
+        "ja": "魔王"
+      },
+      "descriptions": {
+        "en": "charDemonKingDesc",
+        "ja": "charDemonKingDesc"
+      },
       "rarity": "mythic",
+      "element": "dark",
       "power": 6,
       "toughness": 6,
       "manaCost": "4BB"
     },
     {
-      "type": "story",
-      "title": "storyOfficeRomance",
-      "description": "storyOfficeRomanceDesc",
-      "element": "light",
+      "id": "char_001",
+      "type": "character",
+      "titles": {
+        "en": "Mage",
+        "ja": "魔術師"
+      },
+      "descriptions": {
+        "en": "A mage that roams the land.",
+        "ja": "各地を旅する魔術師。"
+      },
+      "rarity": "rare",
+      "element": "wind",
+      "power": 5,
+      "toughness": 7,
+      "manaCost": "3G"
+    },
+    {
+      "id": "char_002",
+      "type": "character",
+      "titles": {
+        "en": "Rogue",
+        "ja": "盗賊"
+      },
+      "descriptions": {
+        "en": "A rogue that roams the land.",
+        "ja": "各地を旅する盗賊。"
+      },
       "rarity": "common",
+      "element": "fire",
+      "power": 5,
+      "toughness": 8,
+      "manaCost": "RR"
+    },
+    {
+      "id": "char_003",
+      "type": "character",
+      "titles": {
+        "en": "Archer",
+        "ja": "狩人"
+      },
+      "descriptions": {
+        "en": "A archer that roams the land.",
+        "ja": "各地を旅する狩人。"
+      },
+      "rarity": "rare",
+      "element": "fire",
+      "power": 3,
+      "toughness": 1,
+      "manaCost": "1RR"
+    },
+    {
+      "id": "char_004",
+      "type": "character",
+      "titles": {
+        "en": "Cleric",
+        "ja": "僧侶"
+      },
+      "descriptions": {
+        "en": "A cleric that roams the land.",
+        "ja": "各地を旅する僧侶。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "power": 1,
+      "toughness": 9,
+      "manaCost": "3"
+    },
+    {
+      "id": "char_005",
+      "type": "character",
+      "titles": {
+        "en": "Paladin",
+        "ja": "聖騎士"
+      },
+      "descriptions": {
+        "en": "A paladin that roams the land.",
+        "ja": "各地を旅する聖騎士。"
+      },
+      "rarity": "uncommon",
+      "element": "earth",
+      "power": 4,
+      "toughness": 4,
+      "manaCost": "3W"
+    },
+    {
+      "id": "char_006",
+      "type": "character",
+      "titles": {
+        "en": "Bard",
+        "ja": "吟遊詩人"
+      },
+      "descriptions": {
+        "en": "A bard that roams the land.",
+        "ja": "各地を旅する吟遊詩人。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "power": 2,
+      "toughness": 7,
+      "manaCost": "BB"
+    },
+    {
+      "id": "char_007",
+      "type": "character",
+      "titles": {
+        "en": "Monk",
+        "ja": "武闘家"
+      },
+      "descriptions": {
+        "en": "A monk that roams the land.",
+        "ja": "各地を旅する武闘家。"
+      },
+      "rarity": "rare",
+      "element": "water",
+      "power": 2,
+      "toughness": 4,
+      "manaCost": "1UU"
+    },
+    {
+      "id": "char_008",
+      "type": "character",
+      "titles": {
+        "en": "Druid",
+        "ja": "森の賢者"
+      },
+      "descriptions": {
+        "en": "A druid that roams the land.",
+        "ja": "各地を旅する森の賢者。"
+      },
+      "rarity": "uncommon",
+      "element": "fire",
+      "power": 4,
+      "toughness": 8,
+      "manaCost": "RR"
+    },
+    {
+      "id": "char_009",
+      "type": "character",
+      "titles": {
+        "en": "Necromancer",
+        "ja": "死霊使い"
+      },
+      "descriptions": {
+        "en": "A necromancer that roams the land.",
+        "ja": "各地を旅する死霊使い。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "power": 8,
+      "toughness": 1,
+      "manaCost": "BB"
+    },
+    {
+      "id": "char_010",
+      "type": "character",
+      "titles": {
+        "en": "Slime",
+        "ja": "スライム"
+      },
+      "descriptions": {
+        "en": "A slime that roams the land.",
+        "ja": "各地を旅するスライム。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "power": 5,
+      "toughness": 8,
+      "manaCost": "GG"
+    },
+    {
+      "id": "char_011",
+      "type": "character",
+      "titles": {
+        "en": "Bat",
+        "ja": "コウモリ"
+      },
+      "descriptions": {
+        "en": "A bat that roams the land.",
+        "ja": "各地を旅するコウモリ。"
+      },
+      "rarity": "uncommon",
+      "element": "earth",
+      "power": 3,
+      "toughness": 4,
+      "manaCost": "3WW"
+    },
+    {
+      "id": "char_012",
+      "type": "character",
+      "titles": {
+        "en": "Skeleton",
+        "ja": "スケルトン"
+      },
+      "descriptions": {
+        "en": "A skeleton that roams the land.",
+        "ja": "各地を旅するスケルトン。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "power": 6,
+      "toughness": 4,
+      "manaCost": "3W"
+    },
+    {
+      "id": "char_013",
+      "type": "character",
+      "titles": {
+        "en": "Zombie",
+        "ja": "ゾンビ"
+      },
+      "descriptions": {
+        "en": "A zombie that roams the land.",
+        "ja": "各地を旅するゾンビ。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "power": 2,
+      "toughness": 6,
+      "manaCost": "B"
+    },
+    {
+      "id": "char_014",
+      "type": "character",
+      "titles": {
+        "en": "Ghost",
+        "ja": "ゴースト"
+      },
+      "descriptions": {
+        "en": "A ghost that roams the land.",
+        "ja": "各地を旅するゴースト。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "power": 6,
+      "toughness": 5,
+      "manaCost": "1"
+    },
+    {
+      "id": "char_015",
+      "type": "character",
+      "titles": {
+        "en": "Orc",
+        "ja": "オーク"
+      },
+      "descriptions": {
+        "en": "A orc that roams the land.",
+        "ja": "各地を旅するオーク。"
+      },
+      "rarity": "uncommon",
+      "element": "light",
+      "power": 8,
+      "toughness": 5,
+      "manaCost": "3WW"
+    },
+    {
+      "id": "char_016",
+      "type": "character",
+      "titles": {
+        "en": "Ogre",
+        "ja": "オーガ"
+      },
+      "descriptions": {
+        "en": "A ogre that roams the land.",
+        "ja": "各地を旅するオーガ。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "power": 4,
+      "toughness": 7,
+      "manaCost": "BB"
+    },
+    {
+      "id": "char_017",
+      "type": "character",
+      "titles": {
+        "en": "Troll",
+        "ja": "トロール"
+      },
+      "descriptions": {
+        "en": "A troll that roams the land.",
+        "ja": "各地を旅するトロール。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "power": 4,
+      "toughness": 2,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_018",
+      "type": "character",
+      "titles": {
+        "en": "Minotaur",
+        "ja": "ミノタウロス"
+      },
+      "descriptions": {
+        "en": "A minotaur that roams the land.",
+        "ja": "各地を旅するミノタウロス。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 3,
+      "toughness": 4,
+      "manaCost": "R"
+    },
+    {
+      "id": "char_019",
+      "type": "character",
+      "titles": {
+        "en": "Chimera",
+        "ja": "キマイラ"
+      },
+      "descriptions": {
+        "en": "A chimera that roams the land.",
+        "ja": "各地を旅するキマイラ。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "power": 5,
+      "toughness": 8,
+      "manaCost": "3G"
+    },
+    {
+      "id": "char_020",
+      "type": "character",
+      "titles": {
+        "en": "King",
+        "ja": "国王"
+      },
+      "descriptions": {
+        "en": "A king that roams the land.",
+        "ja": "各地を旅する国王。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "power": 10,
+      "toughness": 4,
+      "manaCost": "G"
+    },
+    {
+      "id": "char_021",
+      "type": "character",
+      "titles": {
+        "en": "Queen",
+        "ja": "女王"
+      },
+      "descriptions": {
+        "en": "A queen that roams the land.",
+        "ja": "各地を旅する女王。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "power": 10,
+      "toughness": 1,
+      "manaCost": "G"
+    },
+    {
+      "id": "char_022",
+      "type": "character",
+      "titles": {
+        "en": "Prince",
+        "ja": "王子"
+      },
+      "descriptions": {
+        "en": "A prince that roams the land.",
+        "ja": "各地を旅する王子。"
+      },
+      "rarity": "uncommon",
+      "element": "neutral",
+      "power": 5,
+      "toughness": 3,
+      "manaCost": "2"
+    },
+    {
+      "id": "char_023",
+      "type": "character",
+      "titles": {
+        "en": "Princess",
+        "ja": "王女"
+      },
+      "descriptions": {
+        "en": "A princess that roams the land.",
+        "ja": "各地を旅する王女。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "power": 10,
+      "toughness": 10,
+      "manaCost": "3"
+    },
+    {
+      "id": "char_024",
+      "type": "character",
+      "titles": {
+        "en": "Knight",
+        "ja": "騎士"
+      },
+      "descriptions": {
+        "en": "A knight that roams the land.",
+        "ja": "各地を旅する騎士。"
+      },
+      "rarity": "uncommon",
+      "element": "water",
+      "power": 1,
+      "toughness": 2,
+      "manaCost": "1U"
+    },
+    {
+      "id": "char_025",
+      "type": "character",
+      "titles": {
+        "en": "Peasant",
+        "ja": "農民"
+      },
+      "descriptions": {
+        "en": "A peasant that roams the land.",
+        "ja": "各地を旅する農民。"
+      },
+      "rarity": "common",
+      "element": "water",
+      "power": 4,
+      "toughness": 2,
+      "manaCost": "1UU"
+    },
+    {
+      "id": "char_026",
+      "type": "character",
+      "titles": {
+        "en": "Merchant",
+        "ja": "商人"
+      },
+      "descriptions": {
+        "en": "A merchant that roams the land.",
+        "ja": "各地を旅する商人。"
+      },
+      "rarity": "uncommon",
+      "element": "earth",
+      "power": 10,
+      "toughness": 10,
+      "manaCost": "1WW"
+    },
+    {
+      "id": "char_027",
+      "type": "character",
+      "titles": {
+        "en": "Blacksmith",
+        "ja": "鍛冶屋"
+      },
+      "descriptions": {
+        "en": "A blacksmith that roams the land.",
+        "ja": "各地を旅する鍛冶屋。"
+      },
+      "rarity": "uncommon",
+      "element": "fire",
+      "power": 8,
+      "toughness": 10,
+      "manaCost": "2RR"
+    },
+    {
+      "id": "char_028",
+      "type": "character",
+      "titles": {
+        "en": "Thief",
+        "ja": "泥棒"
+      },
+      "descriptions": {
+        "en": "A thief that roams the land.",
+        "ja": "各地を旅する泥棒。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 6,
+      "toughness": 3,
+      "manaCost": "1RR"
+    },
+    {
+      "id": "char_029",
+      "type": "character",
+      "titles": {
+        "en": "Assassin",
+        "ja": "暗殺者"
+      },
+      "descriptions": {
+        "en": "A assassin that roams the land.",
+        "ja": "各地を旅する暗殺者。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "power": 5,
+      "toughness": 2,
+      "manaCost": "3W"
+    },
+    {
+      "id": "char_030",
+      "type": "character",
+      "titles": {
+        "en": "Robot",
+        "ja": "ロボット"
+      },
+      "descriptions": {
+        "en": "A robot that roams the land.",
+        "ja": "各地を旅するロボット。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "power": 6,
+      "toughness": 5,
+      "manaCost": "GG"
+    },
+    {
+      "id": "char_031",
+      "type": "character",
+      "titles": {
+        "en": "Alien",
+        "ja": "宇宙人"
+      },
+      "descriptions": {
+        "en": "A alien that roams the land.",
+        "ja": "各地を旅する宇宙人。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "power": 5,
+      "toughness": 1,
+      "manaCost": "G"
+    },
+    {
+      "id": "char_032",
+      "type": "character",
+      "titles": {
+        "en": "Cyborg",
+        "ja": "サイボーグ"
+      },
+      "descriptions": {
+        "en": "A cyborg that roams the land.",
+        "ja": "各地を旅するサイボーグ。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "power": 9,
+      "toughness": 5,
       "manaCost": "1W"
     },
     {
-      "type": "story",
-      "title": "storyChanceEncounter",
-      "description": "storyChanceEncounterDesc",
-      "element": "wind",
+      "id": "char_033",
+      "type": "character",
+      "titles": {
+        "en": "Astronaut",
+        "ja": "宇宙飛行士"
+      },
+      "descriptions": {
+        "en": "A astronaut that roams the land.",
+        "ja": "各地を旅する宇宙飛行士。"
+      },
+      "rarity": "uncommon",
+      "element": "fire",
+      "power": 1,
+      "toughness": 1,
+      "manaCost": "1RR"
+    },
+    {
+      "id": "char_034",
+      "type": "character",
+      "titles": {
+        "en": "Scientist",
+        "ja": "科学者"
+      },
+      "descriptions": {
+        "en": "A scientist that roams the land.",
+        "ja": "各地を旅する科学者。"
+      },
       "rarity": "common",
-      "manaCost": "U"
+      "element": "fire",
+      "power": 10,
+      "toughness": 4,
+      "manaCost": "R"
     },
     {
-      "type": "story",
-      "title": "storyStormyNight",
-      "description": "storyStormyNightDesc",
-      "element": "water",
+      "id": "char_035",
+      "type": "character",
+      "titles": {
+        "en": "Doctor",
+        "ja": "医者"
+      },
+      "descriptions": {
+        "en": "A doctor that roams the land.",
+        "ja": "各地を旅する医者。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 9,
+      "toughness": 10,
+      "manaCost": "3R"
+    },
+    {
+      "id": "char_036",
+      "type": "character",
+      "titles": {
+        "en": "Lawyer",
+        "ja": "弁護士"
+      },
+      "descriptions": {
+        "en": "A lawyer that roams the land.",
+        "ja": "各地を旅する弁護士。"
+      },
       "rarity": "uncommon",
-      "manaCost": "2U"
+      "element": "neutral",
+      "power": 3,
+      "toughness": 7,
+      "manaCost": "1"
     },
     {
-      "type": "story",
-      "title": "storyTimeLeap",
-      "description": "storyTimeLeapDesc",
-      "element": "wind",
-      "rarity": "rare",
-      "manaCost": "4UU"
-    },
-    {
-      "type": "story",
-      "title": "storyBetrayal",
-      "description": "storyBetrayalDesc",
+      "id": "char_037",
+      "type": "character",
+      "titles": {
+        "en": "Teacher",
+        "ja": "教師"
+      },
+      "descriptions": {
+        "en": "A teacher that roams the land.",
+        "ja": "各地を旅する教師。"
+      },
+      "rarity": "uncommon",
       "element": "dark",
-      "rarity": "uncommon",
+      "power": 8,
+      "toughness": 8,
       "manaCost": "1B"
     },
     {
-      "type": "story",
-      "title": "storyTreasureMap",
-      "description": "storyTreasureMapDesc",
-      "element": "earth",
-      "rarity": "common",
+      "id": "char_038",
+      "type": "character",
+      "titles": {
+        "en": "Farmer",
+        "ja": "農夫"
+      },
+      "descriptions": {
+        "en": "A farmer that roams the land.",
+        "ja": "各地を旅する農夫。"
+      },
+      "rarity": "rare",
+      "element": "neutral",
+      "power": 4,
+      "toughness": 3,
       "manaCost": "1"
+    },
+    {
+      "id": "char_039",
+      "type": "character",
+      "titles": {
+        "en": "Cat",
+        "ja": "猫"
+      },
+      "descriptions": {
+        "en": "A cat that roams the land.",
+        "ja": "各地を旅する猫。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "power": 1,
+      "toughness": 10,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_040",
+      "type": "character",
+      "titles": {
+        "en": "Dog",
+        "ja": "犬"
+      },
+      "descriptions": {
+        "en": "A dog that roams the land.",
+        "ja": "各地を旅する犬。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "power": 9,
+      "toughness": 1,
+      "manaCost": "2WW"
+    },
+    {
+      "id": "char_041",
+      "type": "character",
+      "titles": {
+        "en": "Bird",
+        "ja": "鳥"
+      },
+      "descriptions": {
+        "en": "A bird that roams the land.",
+        "ja": "各地を旅する鳥。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "power": 10,
+      "toughness": 3,
+      "manaCost": "2WW"
+    },
+    {
+      "id": "char_042",
+      "type": "character",
+      "titles": {
+        "en": "Fish",
+        "ja": "魚"
+      },
+      "descriptions": {
+        "en": "A fish that roams the land.",
+        "ja": "各地を旅する魚。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "power": 6,
+      "toughness": 3,
+      "manaCost": "3"
+    },
+    {
+      "id": "char_043",
+      "type": "character",
+      "titles": {
+        "en": "Wolf",
+        "ja": "狼"
+      },
+      "descriptions": {
+        "en": "A wolf that roams the land.",
+        "ja": "各地を旅する狼。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "power": 3,
+      "toughness": 7,
+      "manaCost": "3G"
+    },
+    {
+      "id": "char_044",
+      "type": "character",
+      "titles": {
+        "en": "Bear",
+        "ja": "熊"
+      },
+      "descriptions": {
+        "en": "A bear that roams the land.",
+        "ja": "各地を旅する熊。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "power": 10,
+      "toughness": 8,
+      "manaCost": "3WW"
+    },
+    {
+      "id": "char_045",
+      "type": "character",
+      "titles": {
+        "en": "Lion",
+        "ja": "ライオン"
+      },
+      "descriptions": {
+        "en": "A lion that roams the land.",
+        "ja": "各地を旅するライオン。"
+      },
+      "rarity": "rare",
+      "element": "earth",
+      "power": 2,
+      "toughness": 6,
+      "manaCost": "1W"
+    },
+    {
+      "id": "char_046",
+      "type": "character",
+      "titles": {
+        "en": "Tiger",
+        "ja": "虎"
+      },
+      "descriptions": {
+        "en": "A tiger that roams the land.",
+        "ja": "各地を旅する虎。"
+      },
+      "rarity": "common",
+      "element": "water",
+      "power": 4,
+      "toughness": 4,
+      "manaCost": "U"
+    },
+    {
+      "id": "char_047",
+      "type": "character",
+      "titles": {
+        "en": "Elephant",
+        "ja": "象"
+      },
+      "descriptions": {
+        "en": "A elephant that roams the land.",
+        "ja": "各地を旅する象。"
+      },
+      "rarity": "rare",
+      "element": "earth",
+      "power": 8,
+      "toughness": 3,
+      "manaCost": "1W"
+    },
+    {
+      "id": "char_048",
+      "type": "character",
+      "titles": {
+        "en": "Monkey",
+        "ja": "猿"
+      },
+      "descriptions": {
+        "en": "A monkey that roams the land.",
+        "ja": "各地を旅する猿。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "power": 1,
+      "toughness": 9,
+      "manaCost": "B"
+    },
+    {
+      "id": "char_049",
+      "type": "character",
+      "titles": {
+        "en": "Fire Spirit",
+        "ja": "火の精霊"
+      },
+      "descriptions": {
+        "en": "A fire spirit that roams the land.",
+        "ja": "各地を旅する火の精霊。"
+      },
+      "rarity": "common",
+      "element": "water",
+      "power": 8,
+      "toughness": 5,
+      "manaCost": "2U"
+    },
+    {
+      "id": "char_050",
+      "type": "character",
+      "titles": {
+        "en": "Water Nymph",
+        "ja": "水の精"
+      },
+      "descriptions": {
+        "en": "A water nymph that roams the land.",
+        "ja": "各地を旅する水の精。"
+      },
+      "rarity": "uncommon",
+      "element": "light",
+      "power": 1,
+      "toughness": 8,
+      "manaCost": "2WW"
+    },
+    {
+      "id": "char_051",
+      "type": "character",
+      "titles": {
+        "en": "Wind Sylph",
+        "ja": "風の精"
+      },
+      "descriptions": {
+        "en": "A wind sylph that roams the land.",
+        "ja": "各地を旅する風の精。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "power": 4,
+      "toughness": 7,
+      "manaCost": "1"
+    },
+    {
+      "id": "char_052",
+      "type": "character",
+      "titles": {
+        "en": "Earth Gnome",
+        "ja": "地の精"
+      },
+      "descriptions": {
+        "en": "A earth gnome that roams the land.",
+        "ja": "各地を旅する地の精。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 8,
+      "toughness": 4,
+      "manaCost": "1RR"
+    },
+    {
+      "id": "char_053",
+      "type": "character",
+      "titles": {
+        "en": "Light Angel",
+        "ja": "天使"
+      },
+      "descriptions": {
+        "en": "A light angel that roams the land.",
+        "ja": "各地を旅する天使。"
+      },
+      "rarity": "uncommon",
+      "element": "neutral",
+      "power": 2,
+      "toughness": 7,
+      "manaCost": "1"
+    },
+    {
+      "id": "char_054",
+      "type": "character",
+      "titles": {
+        "en": "Dark Demon",
+        "ja": "悪魔"
+      },
+      "descriptions": {
+        "en": "A dark demon that roams the land.",
+        "ja": "各地を旅する悪魔。"
+      },
+      "rarity": "rare",
+      "element": "earth",
+      "power": 2,
+      "toughness": 4,
+      "manaCost": "1WW"
+    },
+    {
+      "id": "char_055",
+      "type": "character",
+      "titles": {
+        "en": "Vampire",
+        "ja": "吸血鬼"
+      },
+      "descriptions": {
+        "en": "A vampire that roams the land.",
+        "ja": "各地を旅する吸血鬼。"
+      },
+      "rarity": "uncommon",
+      "element": "earth",
+      "power": 3,
+      "toughness": 3,
+      "manaCost": "WW"
+    },
+    {
+      "id": "char_056",
+      "type": "character",
+      "titles": {
+        "en": "Werewolf",
+        "ja": "人狼"
+      },
+      "descriptions": {
+        "en": "A werewolf that roams the land.",
+        "ja": "各地を旅する人狼。"
+      },
+      "rarity": "uncommon",
+      "element": "light",
+      "power": 1,
+      "toughness": 6,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_057",
+      "type": "character",
+      "titles": {
+        "en": "Mummy",
+        "ja": "ミイラ"
+      },
+      "descriptions": {
+        "en": "A mummy that roams the land.",
+        "ja": "各地を旅するミイラ。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "power": 4,
+      "toughness": 2,
+      "manaCost": "2WW"
+    },
+    {
+      "id": "char_058",
+      "type": "character",
+      "titles": {
+        "en": "Gorgon",
+        "ja": "ゴーゴン"
+      },
+      "descriptions": {
+        "en": "A gorgon that roams the land.",
+        "ja": "各地を旅するゴーゴン。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "power": 7,
+      "toughness": 8,
+      "manaCost": "3W"
+    },
+    {
+      "id": "char_059",
+      "type": "character",
+      "titles": {
+        "en": "Harpy",
+        "ja": "ハーピー"
+      },
+      "descriptions": {
+        "en": "A harpy that roams the land.",
+        "ja": "各地を旅するハーピー。"
+      },
+      "rarity": "uncommon",
+      "element": "water",
+      "power": 2,
+      "toughness": 3,
+      "manaCost": "2U"
+    },
+    {
+      "id": "char_060",
+      "type": "character",
+      "titles": {
+        "en": "Siren",
+        "ja": "セイレーン"
+      },
+      "descriptions": {
+        "en": "A siren that roams the land.",
+        "ja": "各地を旅するセイレーン。"
+      },
+      "rarity": "uncommon",
+      "element": "earth",
+      "power": 7,
+      "toughness": 3,
+      "manaCost": "WW"
+    },
+    {
+      "id": "char_061",
+      "type": "character",
+      "titles": {
+        "en": "Sphinx",
+        "ja": "スフィンクス"
+      },
+      "descriptions": {
+        "en": "A sphinx that roams the land.",
+        "ja": "各地を旅するスフィンクス。"
+      },
+      "rarity": "uncommon",
+      "element": "earth",
+      "power": 5,
+      "toughness": 9,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_062",
+      "type": "character",
+      "titles": {
+        "en": "Phoenix",
+        "ja": "フェニックス"
+      },
+      "descriptions": {
+        "en": "A phoenix that roams the land.",
+        "ja": "各地を旅するフェニックス。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 7,
+      "toughness": 2,
+      "manaCost": "1R"
+    },
+    {
+      "id": "char_063",
+      "type": "character",
+      "titles": {
+        "en": "Unicorn",
+        "ja": "ユニコーン"
+      },
+      "descriptions": {
+        "en": "A unicorn that roams the land.",
+        "ja": "各地を旅するユニコーン。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "power": 7,
+      "toughness": 1,
+      "manaCost": "2"
+    },
+    {
+      "id": "char_064",
+      "type": "character",
+      "titles": {
+        "en": "Pegasus",
+        "ja": "ペガサス"
+      },
+      "descriptions": {
+        "en": "A pegasus that roams the land.",
+        "ja": "各地を旅するペガサス。"
+      },
+      "rarity": "uncommon",
+      "element": "light",
+      "power": 10,
+      "toughness": 5,
+      "manaCost": "WW"
+    },
+    {
+      "id": "char_065",
+      "type": "character",
+      "titles": {
+        "en": "Samurai",
+        "ja": "侍"
+      },
+      "descriptions": {
+        "en": "A samurai that roams the land.",
+        "ja": "各地を旅する侍。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 3,
+      "toughness": 6,
+      "manaCost": "1RR"
+    },
+    {
+      "id": "char_066",
+      "type": "character",
+      "titles": {
+        "en": "Ninja",
+        "ja": "忍者"
+      },
+      "descriptions": {
+        "en": "A ninja that roams the land.",
+        "ja": "各地を旅する忍者。"
+      },
+      "rarity": "uncommon",
+      "element": "light",
+      "power": 8,
+      "toughness": 8,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_067",
+      "type": "character",
+      "titles": {
+        "en": "Ronin",
+        "ja": "浪人"
+      },
+      "descriptions": {
+        "en": "A ronin that roams the land.",
+        "ja": "各地を旅する浪人。"
+      },
+      "rarity": "uncommon",
+      "element": "light",
+      "power": 10,
+      "toughness": 6,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_068",
+      "type": "character",
+      "titles": {
+        "en": "Daimyo",
+        "ja": "大名"
+      },
+      "descriptions": {
+        "en": "A daimyo that roams the land.",
+        "ja": "各地を旅する大名。"
+      },
+      "rarity": "uncommon",
+      "element": "neutral",
+      "power": 1,
+      "toughness": 7,
+      "manaCost": "1"
+    },
+    {
+      "id": "char_069",
+      "type": "character",
+      "titles": {
+        "en": "Shogun",
+        "ja": "将軍"
+      },
+      "descriptions": {
+        "en": "A shogun that roams the land.",
+        "ja": "各地を旅する将軍。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "power": 10,
+      "toughness": 8,
+      "manaCost": "GG"
+    },
+    {
+      "id": "char_070",
+      "type": "character",
+      "titles": {
+        "en": "Geisha",
+        "ja": "芸者"
+      },
+      "descriptions": {
+        "en": "A geisha that roams the land.",
+        "ja": "各地を旅する芸者。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "power": 7,
+      "toughness": 5,
+      "manaCost": "1B"
+    },
+    {
+      "id": "char_071",
+      "type": "character",
+      "titles": {
+        "en": "Sumo",
+        "ja": "力士"
+      },
+      "descriptions": {
+        "en": "A sumo that roams the land.",
+        "ja": "各地を旅する力士。"
+      },
+      "rarity": "uncommon",
+      "element": "water",
+      "power": 8,
+      "toughness": 10,
+      "manaCost": "2UU"
+    },
+    {
+      "id": "char_072",
+      "type": "character",
+      "titles": {
+        "en": "Priestess",
+        "ja": "巫女"
+      },
+      "descriptions": {
+        "en": "A priestess that roams the land.",
+        "ja": "各地を旅する巫女。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "power": 1,
+      "toughness": 3,
+      "manaCost": "2W"
+    },
+    {
+      "id": "char_073",
+      "type": "character",
+      "titles": {
+        "en": "Kitsune",
+        "ja": "狐"
+      },
+      "descriptions": {
+        "en": "A kitsune that roams the land.",
+        "ja": "各地を旅する狐。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "power": 10,
+      "toughness": 10,
+      "manaCost": "1BB"
+    },
+    {
+      "id": "char_074",
+      "type": "character",
+      "titles": {
+        "en": "Hacker",
+        "ja": "ハッカー"
+      },
+      "descriptions": {
+        "en": "A hacker that roams the land.",
+        "ja": "各地を旅するハッカー。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "power": 8,
+      "toughness": 1,
+      "manaCost": "1"
+    },
+    {
+      "id": "char_075",
+      "type": "character",
+      "titles": {
+        "en": "Street Samurai",
+        "ja": "ストリートサムライ"
+      },
+      "descriptions": {
+        "en": "A street samurai that roams the land.",
+        "ja": "各地を旅するストリートサムライ。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 9,
+      "toughness": 9,
+      "manaCost": "3RR"
+    },
+    {
+      "id": "char_076",
+      "type": "character",
+      "titles": {
+        "en": "Fixer",
+        "ja": "フィクサー"
+      },
+      "descriptions": {
+        "en": "A fixer that roams the land.",
+        "ja": "各地を旅するフィクサー。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 1,
+      "toughness": 9,
+      "manaCost": "RR"
+    },
+    {
+      "id": "char_077",
+      "type": "character",
+      "titles": {
+        "en": "Netrunner",
+        "ja": "ネットランナー"
+      },
+      "descriptions": {
+        "en": "A netrunner that roams the land.",
+        "ja": "各地を旅するネットランナー。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "power": 10,
+      "toughness": 3,
+      "manaCost": "3BB"
+    },
+    {
+      "id": "char_078",
+      "type": "character",
+      "titles": {
+        "en": "Mercenary",
+        "ja": "傭兵"
+      },
+      "descriptions": {
+        "en": "A mercenary that roams the land.",
+        "ja": "各地を旅する傭兵。"
+      },
+      "rarity": "rare",
+      "element": "water",
+      "power": 7,
+      "toughness": 2,
+      "manaCost": "U"
+    },
+    {
+      "id": "char_079",
+      "type": "character",
+      "titles": {
+        "en": "Dwarf King",
+        "ja": "ドワーフの王"
+      },
+      "descriptions": {
+        "en": "A dwarf king that roams the land.",
+        "ja": "各地を旅するドワーフの王。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "power": 7,
+      "toughness": 5,
+      "manaCost": "BB"
+    },
+    {
+      "id": "char_080",
+      "type": "character",
+      "titles": {
+        "en": "Elf Scout",
+        "ja": "エルフの斥候"
+      },
+      "descriptions": {
+        "en": "A elf scout that roams the land.",
+        "ja": "各地を旅するエルフの斥候。"
+      },
+      "rarity": "uncommon",
+      "element": "water",
+      "power": 7,
+      "toughness": 8,
+      "manaCost": "UU"
+    },
+    {
+      "id": "char_081",
+      "type": "character",
+      "titles": {
+        "en": "Ancient Dragon",
+        "ja": "古の竜"
+      },
+      "descriptions": {
+        "en": "A ancient dragon that roams the land.",
+        "ja": "各地を旅する古の竜。"
+      },
+      "rarity": "uncommon",
+      "element": "water",
+      "power": 5,
+      "toughness": 1,
+      "manaCost": "UU"
+    },
+    {
+      "id": "char_082",
+      "type": "character",
+      "titles": {
+        "en": "Giant Snake",
+        "ja": "大蛇"
+      },
+      "descriptions": {
+        "en": "A giant snake that roams the land.",
+        "ja": "各地を旅する大蛇。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "power": 4,
+      "toughness": 3,
+      "manaCost": "R"
+    },
+    {
+      "id": "char_083",
+      "type": "character",
+      "titles": {
+        "en": "Gryphon",
+        "ja": "グリフォン"
+      },
+      "descriptions": {
+        "en": "A gryphon that roams the land.",
+        "ja": "各地を旅するグリフォン。"
+      },
+      "rarity": "rare",
+      "element": "neutral",
+      "power": 1,
+      "toughness": 9,
+      "manaCost": "1"
+    },
+    {
+      "id": "char_084",
+      "type": "character",
+      "titles": {
+        "en": "Centaur",
+        "ja": "ケンタウロス"
+      },
+      "descriptions": {
+        "en": "A centaur that roams the land.",
+        "ja": "各地を旅するケンタウロス。"
+      },
+      "rarity": "rare",
+      "element": "fire",
+      "power": 8,
+      "toughness": 1,
+      "manaCost": "R"
+    },
+    {
+      "id": "char_085",
+      "type": "character",
+      "titles": {
+        "en": "Kraken",
+        "ja": "クラーケン"
+      },
+      "descriptions": {
+        "en": "A kraken that roams the land.",
+        "ja": "各地を旅するクラーケン。"
+      },
+      "rarity": "uncommon",
+      "element": "earth",
+      "power": 2,
+      "toughness": 10,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_086",
+      "type": "character",
+      "titles": {
+        "en": "Yeti",
+        "ja": "イエティ"
+      },
+      "descriptions": {
+        "en": "A yeti that roams the land.",
+        "ja": "各地を旅するイエティ。"
+      },
+      "rarity": "common",
+      "element": "water",
+      "power": 9,
+      "toughness": 8,
+      "manaCost": "1U"
+    },
+    {
+      "id": "char_087",
+      "type": "character",
+      "titles": {
+        "en": "Basilisk",
+        "ja": "バジリスク"
+      },
+      "descriptions": {
+        "en": "A basilisk that roams the land.",
+        "ja": "各地を旅するバジリスク。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "power": 10,
+      "toughness": 5,
+      "manaCost": "GG"
+    },
+    {
+      "id": "char_088",
+      "type": "character",
+      "titles": {
+        "en": "Mandragora",
+        "ja": "マンドラゴラ"
+      },
+      "descriptions": {
+        "en": "A mandragora that roams the land.",
+        "ja": "各地を旅するマンドラゴラ。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "power": 10,
+      "toughness": 3,
+      "manaCost": "WW"
+    },
+    {
+      "id": "char_089",
+      "type": "character",
+      "titles": {
+        "en": "Succubus",
+        "ja": "サキュバス"
+      },
+      "descriptions": {
+        "en": "A succubus that roams the land.",
+        "ja": "各地を旅するサキュバス。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "power": 3,
+      "toughness": 5,
+      "manaCost": "2B"
+    },
+    {
+      "id": "char_090",
+      "type": "character",
+      "titles": {
+        "en": "Lich",
+        "ja": "リッチ"
+      },
+      "descriptions": {
+        "en": "A lich that roams the land.",
+        "ja": "各地を旅するリッチ。"
+      },
+      "rarity": "rare",
+      "element": "light",
+      "power": 9,
+      "toughness": 8,
+      "manaCost": "WW"
+    },
+    {
+      "id": "char_091",
+      "type": "character",
+      "titles": {
+        "en": "Golem",
+        "ja": "ゴーレム"
+      },
+      "descriptions": {
+        "en": "A golem that roams the land.",
+        "ja": "各地を旅するゴーレム。"
+      },
+      "rarity": "rare",
+      "element": "dark",
+      "power": 2,
+      "toughness": 4,
+      "manaCost": "3B"
+    },
+    {
+      "id": "char_092",
+      "type": "character",
+      "titles": {
+        "en": "Mimic",
+        "ja": "ミミック"
+      },
+      "descriptions": {
+        "en": "A mimic that roams the land.",
+        "ja": "各地を旅するミミック。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "power": 6,
+      "toughness": 2,
+      "manaCost": "W"
+    },
+    {
+      "id": "char_093",
+      "type": "character",
+      "titles": {
+        "en": "Kobold",
+        "ja": "コボルド"
+      },
+      "descriptions": {
+        "en": "A kobold that roams the land.",
+        "ja": "各地を旅するコボルド。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "power": 2,
+      "toughness": 2,
+      "manaCost": "BB"
+    },
+    {
+      "id": "storyOfficeRomance",
+      "type": "story",
+      "titles": {
+        "en": "Office Romance",
+        "ja": "職場恋愛"
+      },
+      "descriptions": {
+        "en": "storyOfficeRomanceDesc",
+        "ja": "storyOfficeRomanceDesc"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "1W"
+    },
+    {
+      "id": "storyChanceEncounter",
+      "type": "story",
+      "titles": {
+        "en": "Chance Encounter",
+        "ja": "偶然の出会い"
+      },
+      "descriptions": {
+        "en": "storyChanceEncounterDesc",
+        "ja": "storyChanceEncounterDesc"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "manaCost": "U"
+    },
+    {
+      "id": "storyStormyNight",
+      "type": "story",
+      "titles": {
+        "en": "Stormy Night",
+        "ja": "嵐の夜"
+      },
+      "descriptions": {
+        "en": "storyStormyNightDesc",
+        "ja": "storyStormyNightDesc"
+      },
+      "rarity": "uncommon",
+      "element": "water",
+      "manaCost": "2U"
+    },
+    {
+      "id": "storyTimeLeap",
+      "type": "story",
+      "titles": {
+        "en": "Time Leap",
+        "ja": "タイムリープ"
+      },
+      "descriptions": {
+        "en": "storyTimeLeapDesc",
+        "ja": "storyTimeLeapDesc"
+      },
+      "rarity": "rare",
+      "element": "wind",
+      "manaCost": "4UU"
+    },
+    {
+      "id": "storyBetrayal",
+      "type": "story",
+      "titles": {
+        "en": "Betrayal",
+        "ja": "裏切り"
+      },
+      "descriptions": {
+        "en": "storyBetrayalDesc",
+        "ja": "storyBetrayalDesc"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "manaCost": "1B"
+    },
+    {
+      "id": "storyTreasureMap",
+      "type": "story",
+      "titles": {
+        "en": "Treasure Map",
+        "ja": "宝の地図"
+      },
+      "descriptions": {
+        "en": "storyTreasureMapDesc",
+        "ja": "storyTreasureMapDesc"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "manaCost": "1"
+    },
+    {
+      "id": "story_001",
+      "type": "story",
+      "titles": {
+        "en": "Lost Artifact",
+        "ja": "失われた遺物"
+      },
+      "descriptions": {
+        "en": "A tale of lost artifact that changed everything.",
+        "ja": "すべてを変えた失われた遺物の物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "1W"
+    },
+    {
+      "id": "story_002",
+      "type": "story",
+      "titles": {
+        "en": "Forbidden Love",
+        "ja": "禁断の恋"
+      },
+      "descriptions": {
+        "en": "A tale of forbidden love that changed everything.",
+        "ja": "すべてを変えた禁断の恋の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "manaCost": "3GG"
+    },
+    {
+      "id": "story_003",
+      "type": "story",
+      "titles": {
+        "en": "Revenge Plot",
+        "ja": "復讐の計画"
+      },
+      "descriptions": {
+        "en": "A tale of revenge plot that changed everything.",
+        "ja": "すべてを変えた復讐の計画の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "manaCost": "B"
+    },
+    {
+      "id": "story_004",
+      "type": "story",
+      "titles": {
+        "en": "Sudden Betrayal",
+        "ja": "突然の裏切り"
+      },
+      "descriptions": {
+        "en": "A tale of sudden betrayal that changed everything.",
+        "ja": "すべてを変えた突然の裏切りの物語。"
+      },
+      "rarity": "uncommon",
+      "element": "neutral",
+      "manaCost": "1"
+    },
+    {
+      "id": "story_005",
+      "type": "story",
+      "titles": {
+        "en": "Mysterious Murder",
+        "ja": "不可解な殺人"
+      },
+      "descriptions": {
+        "en": "A tale of mysterious murder that changed everything.",
+        "ja": "すべてを変えた不可解な殺人の物語。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "manaCost": "G"
+    },
+    {
+      "id": "story_006",
+      "type": "story",
+      "titles": {
+        "en": "Secret Society",
+        "ja": "秘密結社"
+      },
+      "descriptions": {
+        "en": "A tale of secret society that changed everything.",
+        "ja": "すべてを変えた秘密結社の物語。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "manaCost": "GG"
+    },
+    {
+      "id": "story_007",
+      "type": "story",
+      "titles": {
+        "en": "Time Travel",
+        "ja": "タイムトラベル"
+      },
+      "descriptions": {
+        "en": "A tale of time travel that changed everything.",
+        "ja": "すべてを変えたタイムトラベルの物語。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "manaCost": "1G"
+    },
+    {
+      "id": "story_008",
+      "type": "story",
+      "titles": {
+        "en": "Parallel Universe",
+        "ja": "並行世界"
+      },
+      "descriptions": {
+        "en": "A tale of parallel universe that changed everything.",
+        "ja": "すべてを変えた並行世界の物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "1W"
+    },
+    {
+      "id": "story_009",
+      "type": "story",
+      "titles": {
+        "en": "Alien Invasion",
+        "ja": "宇宙人の侵略"
+      },
+      "descriptions": {
+        "en": "A tale of alien invasion that changed everything.",
+        "ja": "すべてを変えた宇宙人の侵略の物語。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "manaCost": "1G"
+    },
+    {
+      "id": "story_010",
+      "type": "story",
+      "titles": {
+        "en": "Great War",
+        "ja": "大戦"
+      },
+      "descriptions": {
+        "en": "A tale of great war that changed everything.",
+        "ja": "すべてを変えた大戦の物語。"
+      },
+      "rarity": "rare",
+      "element": "light",
+      "manaCost": "2WW"
+    },
+    {
+      "id": "story_011",
+      "type": "story",
+      "titles": {
+        "en": "Rebellion",
+        "ja": "反乱"
+      },
+      "descriptions": {
+        "en": "A tale of rebellion that changed everything.",
+        "ja": "すべてを変えた反乱の物語。"
+      },
+      "rarity": "common",
+      "element": "neutral",
+      "manaCost": "2"
+    },
+    {
+      "id": "story_012",
+      "type": "story",
+      "titles": {
+        "en": "Coronation",
+        "ja": "戴冠式"
+      },
+      "descriptions": {
+        "en": "A tale of coronation that changed everything.",
+        "ja": "すべてを変えた戴冠式の物語。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "manaCost": "WW"
+    },
+    {
+      "id": "story_013",
+      "type": "story",
+      "titles": {
+        "en": "Wedding",
+        "ja": "結婚式"
+      },
+      "descriptions": {
+        "en": "A tale of wedding that changed everything.",
+        "ja": "すべてを変えた結婚式の物語。"
+      },
+      "rarity": "rare",
+      "element": "water",
+      "manaCost": "3UU"
+    },
+    {
+      "id": "story_014",
+      "type": "story",
+      "titles": {
+        "en": "Funeral",
+        "ja": "葬儀"
+      },
+      "descriptions": {
+        "en": "A tale of funeral that changed everything.",
+        "ja": "すべてを変えた葬儀の物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "2W"
+    },
+    {
+      "id": "story_015",
+      "type": "story",
+      "titles": {
+        "en": "Dungeon Crawl",
+        "ja": "ダンジョン探索"
+      },
+      "descriptions": {
+        "en": "A tale of dungeon crawl that changed everything.",
+        "ja": "すべてを変えたダンジョン探索の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "manaCost": "1B"
+    },
+    {
+      "id": "story_016",
+      "type": "story",
+      "titles": {
+        "en": "Treasure Hunt",
+        "ja": "宝探し"
+      },
+      "descriptions": {
+        "en": "A tale of treasure hunt that changed everything.",
+        "ja": "すべてを変えた宝探しの物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "2W"
+    },
+    {
+      "id": "story_017",
+      "type": "story",
+      "titles": {
+        "en": "Epic Journey",
+        "ja": "壮大な旅"
+      },
+      "descriptions": {
+        "en": "A tale of epic journey that changed everything.",
+        "ja": "すべてを変えた壮大な旅の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "neutral",
+      "manaCost": "1"
+    },
+    {
+      "id": "story_018",
+      "type": "story",
+      "titles": {
+        "en": "Final Stand",
+        "ja": "最後の抵抗"
+      },
+      "descriptions": {
+        "en": "A tale of final stand that changed everything.",
+        "ja": "すべてを変えた最後の抵抗の物語。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "manaCost": "BB"
+    },
+    {
+      "id": "story_019",
+      "type": "story",
+      "titles": {
+        "en": "Unexpected Help",
+        "ja": "予期せぬ助け"
+      },
+      "descriptions": {
+        "en": "A tale of unexpected help that changed everything.",
+        "ja": "すべてを変えた予期せぬ助けの物語。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "manaCost": "BB"
+    },
+    {
+      "id": "story_020",
+      "type": "story",
+      "titles": {
+        "en": "Foggy Morning",
+        "ja": "霧の朝"
+      },
+      "descriptions": {
+        "en": "A tale of foggy morning that changed everything.",
+        "ja": "すべてを変えた霧の朝の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "fire",
+      "manaCost": "R"
+    },
+    {
+      "id": "story_021",
+      "type": "story",
+      "titles": {
+        "en": "Sunny Day",
+        "ja": "晴れた日"
+      },
+      "descriptions": {
+        "en": "A tale of sunny day that changed everything.",
+        "ja": "すべてを変えた晴れた日の物語。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "manaCost": "R"
+    },
+    {
+      "id": "story_022",
+      "type": "story",
+      "titles": {
+        "en": "Starry Night",
+        "ja": "星降る夜"
+      },
+      "descriptions": {
+        "en": "A tale of starry night that changed everything.",
+        "ja": "すべてを変えた星降る夜の物語。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "manaCost": "GG"
+    },
+    {
+      "id": "story_023",
+      "type": "story",
+      "titles": {
+        "en": "Eclipse",
+        "ja": "日食"
+      },
+      "descriptions": {
+        "en": "A tale of eclipse that changed everything.",
+        "ja": "すべてを変えた日食の物語。"
+      },
+      "rarity": "common",
+      "element": "wind",
+      "manaCost": "GG"
+    },
+    {
+      "id": "story_024",
+      "type": "story",
+      "titles": {
+        "en": "Meteor Shower",
+        "ja": "流星群"
+      },
+      "descriptions": {
+        "en": "A tale of meteor shower that changed everything.",
+        "ja": "すべてを変えた流星群の物語。"
+      },
+      "rarity": "rare",
+      "element": "light",
+      "manaCost": "2W"
+    },
+    {
+      "id": "story_025",
+      "type": "story",
+      "titles": {
+        "en": "First Date",
+        "ja": "初めてのデート"
+      },
+      "descriptions": {
+        "en": "A tale of first date that changed everything.",
+        "ja": "すべてを変えた初めてのデートの物語。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "manaCost": "1WW"
+    },
+    {
+      "id": "story_026",
+      "type": "story",
+      "titles": {
+        "en": "Breakup",
+        "ja": "別れ"
+      },
+      "descriptions": {
+        "en": "A tale of breakup that changed everything.",
+        "ja": "すべてを変えた別れの物語。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "manaCost": "R"
+    },
+    {
+      "id": "story_027",
+      "type": "story",
+      "titles": {
+        "en": "Reunion",
+        "ja": "再会"
+      },
+      "descriptions": {
+        "en": "A tale of reunion that changed everything.",
+        "ja": "すべてを変えた再会の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "manaCost": "GG"
+    },
+    {
+      "id": "story_028",
+      "type": "story",
+      "titles": {
+        "en": "Childhood Promise",
+        "ja": "子供の頃の約束"
+      },
+      "descriptions": {
+        "en": "A tale of childhood promise that changed everything.",
+        "ja": "すべてを変えた子供の頃の約束の物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "2W"
+    },
+    {
+      "id": "story_029",
+      "type": "story",
+      "titles": {
+        "en": "Unrequited Love",
+        "ja": "片思い"
+      },
+      "descriptions": {
+        "en": "A tale of unrequited love that changed everything.",
+        "ja": "すべてを変えた片思いの物語。"
+      },
+      "rarity": "uncommon",
+      "element": "dark",
+      "manaCost": "B"
+    },
+    {
+      "id": "story_030",
+      "type": "story",
+      "titles": {
+        "en": "Industrial Revolution",
+        "ja": "産業革命"
+      },
+      "descriptions": {
+        "en": "A tale of industrial revolution that changed everything.",
+        "ja": "すべてを変えた産業革命の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "fire",
+      "manaCost": "3R"
+    },
+    {
+      "id": "story_031",
+      "type": "story",
+      "titles": {
+        "en": "Zombie Apocalypse",
+        "ja": "ゾンビ・アポカリプス"
+      },
+      "descriptions": {
+        "en": "A tale of zombie apocalypse that changed everything.",
+        "ja": "すべてを変えたゾンビ・アポカリプスの物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "W"
+    },
+    {
+      "id": "story_032",
+      "type": "story",
+      "titles": {
+        "en": "Cyber Attack",
+        "ja": "サイバー攻撃"
+      },
+      "descriptions": {
+        "en": "A tale of cyber attack that changed everything.",
+        "ja": "すべてを変えたサイバー攻撃の物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "3W"
+    },
+    {
+      "id": "story_033",
+      "type": "story",
+      "titles": {
+        "en": "Space Odyssey",
+        "ja": "宇宙の旅"
+      },
+      "descriptions": {
+        "en": "A tale of space odyssey that changed everything.",
+        "ja": "すべてを変えた宇宙の旅の物語。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "manaCost": "BB"
+    },
+    {
+      "id": "story_034",
+      "type": "story",
+      "titles": {
+        "en": "Ghost Hunt",
+        "ja": "幽霊退治"
+      },
+      "descriptions": {
+        "en": "A tale of ghost hunt that changed everything.",
+        "ja": "すべてを変えた幽霊退治の物語。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "manaCost": "1BB"
+    },
+    {
+      "id": "story_035",
+      "type": "story",
+      "titles": {
+        "en": "Magic Ritual",
+        "ja": "魔法の儀式"
+      },
+      "descriptions": {
+        "en": "A tale of magic ritual that changed everything.",
+        "ja": "すべてを変えた魔法の儀式の物語。"
+      },
+      "rarity": "rare",
+      "element": "dark",
+      "manaCost": "B"
+    },
+    {
+      "id": "story_036",
+      "type": "story",
+      "titles": {
+        "en": "Holy Grail Quest",
+        "ja": "聖杯探索"
+      },
+      "descriptions": {
+        "en": "A tale of holy grail quest that changed everything.",
+        "ja": "すべてを変えた聖杯探索の物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "WW"
+    },
+    {
+      "id": "story_037",
+      "type": "story",
+      "titles": {
+        "en": "Dragon Hunt",
+        "ja": "ドラゴン退治"
+      },
+      "descriptions": {
+        "en": "A tale of dragon hunt that changed everything.",
+        "ja": "すべてを変えたドラゴン退治の物語。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "manaCost": "1R"
+    },
+    {
+      "id": "story_038",
+      "type": "story",
+      "titles": {
+        "en": "Shipwreck",
+        "ja": "難破"
+      },
+      "descriptions": {
+        "en": "A tale of shipwreck that changed everything.",
+        "ja": "すべてを変えた難破の物語。"
+      },
+      "rarity": "common",
+      "element": "fire",
+      "manaCost": "3RR"
+    },
+    {
+      "id": "story_039",
+      "type": "story",
+      "titles": {
+        "en": "Desert Oasis",
+        "ja": "砂漠のオアシス"
+      },
+      "descriptions": {
+        "en": "A tale of desert oasis that changed everything.",
+        "ja": "すべてを変えた砂漠のオアシスの物語。"
+      },
+      "rarity": "common",
+      "element": "dark",
+      "manaCost": "B"
+    },
+    {
+      "id": "story_040",
+      "type": "story",
+      "titles": {
+        "en": "Lost Memory",
+        "ja": "失われた記憶"
+      },
+      "descriptions": {
+        "en": "A tale of lost memory that changed everything.",
+        "ja": "すべてを変えた失われた記憶の物語。"
+      },
+      "rarity": "common",
+      "element": "water",
+      "manaCost": "3UU"
+    },
+    {
+      "id": "story_041",
+      "type": "story",
+      "titles": {
+        "en": "Secret Letter",
+        "ja": "秘密の手紙"
+      },
+      "descriptions": {
+        "en": "A tale of secret letter that changed everything.",
+        "ja": "すべてを変えた秘密の手紙の物語。"
+      },
+      "rarity": "common",
+      "element": "earth",
+      "manaCost": "W"
+    },
+    {
+      "id": "story_042",
+      "type": "story",
+      "titles": {
+        "en": "Stolen Gem",
+        "ja": "盗まれた宝石"
+      },
+      "descriptions": {
+        "en": "A tale of stolen gem that changed everything.",
+        "ja": "すべてを変えた盗まれた宝石の物語。"
+      },
+      "rarity": "common",
+      "element": "light",
+      "manaCost": "W"
+    },
+    {
+      "id": "story_043",
+      "type": "story",
+      "titles": {
+        "en": "Cursed Mask",
+        "ja": "呪いの仮面"
+      },
+      "descriptions": {
+        "en": "A tale of cursed mask that changed everything.",
+        "ja": "すべてを変えた呪いの仮面の物語。"
+      },
+      "rarity": "uncommon",
+      "element": "wind",
+      "manaCost": "GG"
     }
   ]
 }

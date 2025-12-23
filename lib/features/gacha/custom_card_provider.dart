@@ -45,17 +45,36 @@ class CustomCardNotifier extends Notifier<List<CustomSetModel>> {
   Future<void> _ensureDefaultSetExists() async {
     final setsDir = await _getCustomSetsDir();
     final defaultSetDir = Directory(p.join(setsDir.path, 'default_set'));
-    
-    // Always check for manifest.json as well to be sure it's not an empty folder
     final manifestFile = File(p.join(defaultSetDir.path, 'manifest.json'));
-    if (await manifestFile.exists()) return;
+    
+    // Load asset manifest
+    final manifestData = await rootBundle.loadString('assets/data/default_set/manifest.json');
+    final assetManifest = json.decode(manifestData);
+    final int assetCardCount = (assetManifest['cards'] as List).length;
 
-    print('Initializing default set in ${defaultSetDir.path}...');
+    bool shouldUpdate = false;
+    if (!await manifestFile.exists()) {
+      shouldUpdate = true;
+    } else {
+      // Check if card count matches
+      try {
+        final existingContent = await manifestFile.readAsString();
+        final existingManifest = json.decode(existingContent);
+        final int existingCardCount = (existingManifest['cards'] as List).length;
+        if (existingCardCount < assetCardCount) {
+          shouldUpdate = true;
+          print('Default set is outdated ($existingCardCount < $assetCardCount). Updating...');
+        }
+      } catch (e) {
+        shouldUpdate = true;
+      }
+    }
+
+    if (!shouldUpdate) return;
+
+    print('Initializing/Updating default set in ${defaultSetDir.path}...');
     try {
       await defaultSetDir.create(recursive: true);
-      
-      // Copy manifest.json from assets
-      final manifestData = await rootBundle.loadString('assets/data/default_set/manifest.json');
       await manifestFile.writeAsString(manifestData);
 
       // Copy crystal image

@@ -20,17 +20,17 @@ class SettingsModal extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     
-    return DefaultTabController(
-      length: 2,
-      child: Dialog(
-        backgroundColor: const Color(0xFF1A1A1A),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: const Color(0xFFD4AF37).withValues(alpha: 0.3),
-            width: 2,
-          ),
+    return Dialog(
+      backgroundColor: const Color(0xFF1A1A1A),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: BorderSide(
+          color: const Color(0xFFD4AF37).withValues(alpha: 0.3),
+          width: 2,
         ),
+      ),
+      child: DefaultTabController(
+        length: 2,
         child: Container(
           width: 500,
           constraints: const BoxConstraints(maxHeight: 600),
@@ -59,7 +59,7 @@ class SettingsModal extends ConsumerWidget {
                     const Spacer(),
                     IconButton(
                       icon: const Icon(Icons.close, color: Colors.white70),
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
                     ),
                   ],
                 ),
