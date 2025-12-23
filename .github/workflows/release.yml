@@ -206,7 +206,7 @@ jobs:
         # Only run if Twitter secrets are configured
         if: env.HAS_TWITTER == 'true'
         continue-on-error: true
-        uses: ethomson/send-tweet-action@v1
+        uses: smapiot/send-tweet-v2-action@v1
         with:
           status: |
             Idea Mixer v${{ needs.create-release.outputs.version }} をリリースしました！ 🚀
