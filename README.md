@@ -21,6 +21,10 @@
 
 ## 🎮 How to Use
 
+<div style="text-align: center;">
+<video controls src="screenshot/demo.mov" width="400"  title="Demo"></video>
+</div>
+
 1. **Spin the Gacha**: Click the "SPIN" button at the bottom of the "Gacha" tab.
 2. **Reveal Cards**: Click on face-down cards to reveal them one by one.
 3. **Card Creator**: Go to the "Studio" tab to create your own card sets and cards.

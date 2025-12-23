@@ -21,6 +21,10 @@
 
 ## 🎮 使い方
 
+<div style="text-align: center;">
+<video controls src="screenshot/demo.mov" width="400"  title="Demo"></video>
+</div>
+
 1. **ガチャを引く**: 「Gacha」タブの下部にある「SPIN」ボタンをクリック
 2. **カードをめくる**: 伏せられたカードをクリックして1枚ずつめくる
    - または「REVEAL ALL」ボタンですべて一括表示

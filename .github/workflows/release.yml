@@ -196,11 +196,9 @@ jobs:
     name: Notify Social Media
     needs: [create-release, build-windows, build-macos, build-android]
     runs-on: ubuntu-latest
-    env:
-      TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
     steps:
       - name: Send Tweet
-        if: env.TWITTER_CONSUMER_KEY != ''
+        # Skipped if Twitter secrets are not configured (will fail silently)
         continue-on-error: true
         uses: ethomson/send-tweet-action@v1
         with:
